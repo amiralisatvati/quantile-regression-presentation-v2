@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>رگرسیون کوانتایل - دانشگاه فردوسی مشهد</title>
-	  <!-- KaTeX for mathematical formulas -->
-	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-	  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-	  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-	  <!-- SEO & Social Media -->
-	  <meta name="description" content="ارائه حرفه‌ای رگرسیون کوانتایل - دانشگاه فردوسی مشهد">
-	  <meta name="author" content="امیرعلی سطوتی">
-	  <meta property="og:title" content="رگرسیون کوانتایل - Quantile Regression">
-	  <meta property="og:description" content="ارائه تعاملی رگرسیون کوانتایل با ۴۰ اسلاید">
+    <!-- KaTeX for mathematical formulas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <!-- SEO & Social Media -->
+    <meta name="description" content="ارائه حرفه‌ای رگرسیون کوانتایل - دانشگاه فردوسی مشهد">
+    <meta name="author" content="امیرعلی سطوتی">
+    <meta property="og:title" content="رگرسیون کوانتایل - Quantile Regression">
+    <meta property="og:description" content="ارائه تعاملی رگرسیون کوانتایل با ۴۰ اسلاید">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -209,6 +209,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            scroll-behavior: smooth; /* Smooth Scroll */
         }
 
         .slide {
@@ -239,6 +240,21 @@
 
         .slide-content {
             background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            animation: slideIn 0.6s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        /* Enhanced Slide Styles (from your content) */
+        .enhanced-slide {
+             background: var(--card-bg);
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
             border-radius: 16px;
@@ -283,6 +299,20 @@
         .speaker-notes.active {
             max-height: 200px;
             overflow-y: auto;
+        }
+        
+        /* Speaker Notes Scrollbar */
+        .speaker-notes::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .speaker-notes::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .speaker-notes::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
         }
 
         .speaker-notes-title {
@@ -417,6 +447,11 @@
             line-height: 1.6;
         }
 
+        /* Enhanced List Styles */
+        .enhanced-list li {
+             margin-bottom: 0.8rem;
+        }
+
         .formula-box {
             background: rgba(59, 130, 246, 0.1);
             border-left: 4px solid var(--primary);
@@ -437,6 +472,15 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin: 1.5rem 0;
+        }
+
+        .grid-2 > div {
+            transition: all 0.3s ease;
+        }
+
+        .grid-2 > div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
         }
 
         .grid-3 {
@@ -501,6 +545,7 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
             overflow: hidden;
+            cursor: pointer; /* Added cursor pointer */
         }
 
         .progress-fill {
@@ -531,7 +576,7 @@
             border-color: var(--primary);
         }
 
-        .code-block {
+        .code-block, .code-snippet {
             background: rgba(15, 23, 42, 0.9);
             border: 1px solid var(--card-border);
             padding: 1.5rem;
@@ -543,9 +588,13 @@
             line-height: 1.6;
         }
 
-        .code-block code {
-            color: #60a5fa;
+        .code-block code, .code-snippet span {
+            color: #f1f5f9;
         }
+        
+        .code-snippet .comment { color: #6b7280; }
+        .code-snippet .keyword { color: #c084fc; }
+        .code-snippet .string { color: #86efac; }
 
         .shortcut-hint {
             position: fixed;
@@ -566,6 +615,13 @@
         }
 
         table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            margin: 1.5rem 0;
+        }
+        
+        .data-table, .mini-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.95rem;
@@ -621,7 +677,7 @@
             color: var(--primary);
         }
 
-        .reference-item {
+        .reference-item, .references .reference-item {
             margin: 1.5rem 0;
             padding: 1rem;
             background: rgba(255, 255, 255, 0.05);
@@ -653,6 +709,157 @@
         .close-modal:hover {
             background: var(--danger);
             border-color: var(--danger);
+        }
+        
+        /* Box Styles */
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-right: 4px solid var(--warning);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .success-box {
+             background: rgba(16, 185, 129, 0.1);
+             border-right: 4px solid var(--success);
+             padding: 1rem;
+             border-radius: 8px;
+             margin: 1rem 0;
+        }
+        
+        .info-box {
+             background: rgba(59, 130, 246, 0.1);
+             border-right: 4px solid var(--primary);
+             padding: 1rem;
+             border-radius: 8px;
+             margin: 1rem 0;
+        }
+        
+        .key-insight {
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            margin: 1rem 0;
+        }
+        
+        .highlight-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--secondary);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem;
+        }
+        
+        /* Comparison Boxes */
+        .comparison-section {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .comparison-box {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        /* History Panel Styles */
+        .history-tab-content {
+            animation: fadeInHistory 0.4s ease;
+        }
+
+        /* Overview Grid Styles */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .overview-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .overview-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        .overview-item.active {
+            border-color: var(--success);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        /* Badge 2026 Style */
+        .badge-2026 {
+            background: linear-gradient(45deg, #ff00cc, #3333ff);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 0, 204, 0.5);
+            animation: pulse 2s infinite;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 204, 0.7); transform: scale(1); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 0, 204, 0); transform: scale(1.05); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 204, 0); transform: scale(1); }
+        }
+
+        /* Poll Styles */
+        .poll-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .poll-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .poll-option:hover, .poll-option.selected {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid var(--primary);
+        }
+        .poll-icon {
+            font-size: 1.5rem;
+        }
+
+        @keyframes fadeInHistory {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #historyTabBtn:hover,
+        #peopleTabBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
         @media (max-width: 768px) {
@@ -693,6 +900,28 @@
                 width: 100%;
                 justify-content: flex-start;
             }
+            
+            .comparison-section {
+                flex-direction: column;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .slide {
+                page-break-after: always;
+                opacity: 1 !important;
+                position: relative !important;
+            }
+
+            header, footer, .controls, .speaker-notes, #particleCanvas, #drawingCanvas, #laserPointer {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -700,6 +929,8 @@
     <canvas id="particleCanvas"></canvas>
     <canvas id="drawingCanvas"></canvas>
     <div id="laserPointer"></div>
+    
+    <!-- References Modal -->
     <div id="referencesModal" class="modal">
         <div style="position: relative; width: 100%;">
             <button class="close-modal" onclick="closeReferences()">&times;</button>
@@ -728,8 +959,19 @@
 
                 <div class="reference-item">
                     <strong>دانشگاه فردوسی مشهد:</strong>
-                    <p>دانشکده علوم • گروه آمار • 1404</p>
+                    <p>دانشکده علوم ریاضی • گروه آمار • 1404</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overview Modal -->
+    <div id="overviewModal" class="modal">
+        <div style="position: relative; width: 100%;">
+            <button class="close-modal" onclick="toggleOverview()">&times;</button>
+            <div class="modal-content">
+                <div class="modal-header"><i class="fas fa-th-large"></i> فهرست اسلایدها</div>
+                <div id="overviewGrid" class="overview-grid"></div>
             </div>
         </div>
     </div>
@@ -737,7 +979,8 @@
     <div class="container">
         <header>
             <div class="logo-section">
-                <i class="fas fa-chart-line" style="font-size: 1.8rem; color: #3b82f6;"></i>
+                <!-- FUM Logo Added Here -->
+                <img src="https://upload.wikimedia.org/wikipedia/fa/9/90/FUM_Logo.png" alt="University Logo" style="height: 50px; filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));">
                 <h1>رگرسیون کوانتایل</h1>
             </div>
             <div class="university-badge">
@@ -746,6 +989,9 @@
             </div>
             <div class="controls">
                 <div class="timer-display" id="timerDisplay">00:00</div>
+                <button class="btn btn-secondary" onclick="toggleOverview()" title="فهرست (O)">
+                    <i class="fas fa-th-large"></i> فهرست
+                </button>
                 <button class="btn btn-secondary" onclick="toggleTimer()" title="تایمر (T)">
                     <i class="fas fa-hourglass-start"></i> تایمر
                 </button>
@@ -755,15 +1001,17 @@
                 <button class="btn btn-secondary" id="penBtn" onclick="togglePen()" title="قلم (P)">
                     <i class="fas fa-pen"></i> قلم
                 </button>
+                <!-- Eraser Button Added -->
+                <button class="btn btn-secondary" id="eraserBtn" onclick="toggleEraser()" title="پاک‌کن (E)">
+                    <i class="fas fa-eraser"></i> پاک‌کن
+                </button>
                 <button class="btn btn-secondary" onclick="toggleSpeakerNotes()" title="یادداشت‌ها (N)">
                     <i class="fas fa-sticky-note"></i> یادداشت
                 </button>
                 <button class="btn btn-secondary" onclick="openReferences()" title="منابع (R)">
                     <i class="fas fa-book"></i> منابع
                 </button>
-                <button class="btn btn-secondary" onclick="toggleTheme()" title="تم (T)">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <!-- Theme Toggle Removed as requested -->
                 <button class="btn btn-secondary" onclick="toggleFullscreen()" title="تمام صفحه (F)">
                     <i class="fas fa-expand"></i>
                 </button>
@@ -786,7 +1034,7 @@
 
         <footer>
             <div>
-                <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">33</span></span>
+                <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">34</span></span>
             </div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
@@ -803,82 +1051,14 @@
 
         <div class="shortcut-hint">
             <strong>میانبرها:</strong><br>
-            ➜ / فلش: جابجایی<br>
-            ⎋ N: یادداشت<br>
-            L: لیزر | P: قلم<br>
+            ➜ / فلش / کشیدن: جابجایی<br>
+            O: فهرست | ⎋ N: یادداشت<br>
+            L: لیزر | P: قلم | E: پاک‌کن<br>
             R: منابع | F: تمام صفحه
         </div>
     </div>
-/* History Panel Styles */
-.history-tab-content {
-  animation: fadeInHistory 0.4s ease;
-}
-
-@keyframes fadeInHistory {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#historyTabBtn:hover,
-#peopleTabBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
-
-.grid-2 > div {
-  transition: all 0.3s ease;
-}
-
-.grid-2 > div:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
-}
-
-	/* Smooth Scroll */
-	.slide-container {
-	  scroll-behavior: smooth;
-	}
-
-	/* Speaker Notes Scrollbar */
-	.speaker-notes::-webkit-scrollbar {
-	  width: 6px;
-	}
-
-	.speaker-notes::-webkit-scrollbar-track {
-	  background: rgba(255, 255, 255, 0.05);
-	}
-
-	.speaker-notes::-webkit-scrollbar-thumb {
-	  background: var(--primary);
-	  border-radius: 3px;
-	}
-
-	/* Print Styles */
-	@media print {
-	  body {
-	    background: white !important;
-	    color: black !important;
-	  }
-
-	  .slide {
-	    page-break-after: always;
-	    opacity: 1 !important;
-	    position: relative !important;
-	  }
-
-	  header, footer, .controls, .speaker-notes, #particleCanvas, #drawingCanvas, #laserPointer {
-	    display: none !important;
-	  }
-	}
 
     <script>
-			
         // ==================== SLIDES DATA WITH SPEAKER NOTES ====================
         const slidesData = [
             {
@@ -888,7 +1068,9 @@
                 timing: 2,
                 content: `
                     <div class="slide-title">
-                        <i class="fas fa-chart-line" style="font-size: 5rem; color: #3b82f6; margin-bottom: 1rem;"></i>
+                        <img src="https://upload.wikimedia.org/wikipedia/fa/9/90/FUM_Logo.png" style="width: 100px; margin-bottom: 1rem;" alt="FUM Logo">
+                        <div class="badge-2026">✨ خفن‌ترین‌های ۲۰۲۶ ✨</div>
+                        <i class="fas fa-chart-line" style="font-size: 5rem; color: #3b82f6; margin-bottom: 1rem; margin-top: 1rem;"></i>
                         <h1>رگرسیون کوانتایل</h1>
                         <h2>Quantile Regression</h2>
                         <p style="font-size: 1.2rem; margin: 2rem 0; opacity: 0.8;">
@@ -909,7 +1091,7 @@
                             </div>
                         </div>
                         <p style="font-size: 0.95rem; margin-top: 3rem; opacity: 0.6;">
-                            کارشناسی آمار • دانشگاه فردوسی مشهد • ۱۴۰۴
+                            کارشناسی آمار • دانشگاه فردوسی مشهد • دانشکده علوم ریاضی • ۱۴۰۴
                         </p>
                     </div>
                 `,
@@ -1300,1126 +1482,1137 @@
                 }
             },
 
-{
-  id: 9,
-  title: "تاریخچه و پیشگامان",
-  type: "interactive",
-  timing: 5,
-  content: `
-    <div class="slide-content">
-      <h2><i class="fas fa-history" style="margin-right: 1rem;"></i>تاریخچه رگرسیون کوانتایل و پیشگامان</h2>
-      
-      <div style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid rgba(59, 130, 246, 0.3); padding-bottom: 0.5rem;">
-        <button id="historyTabBtn" onclick="switchHistoryTab('history')" style="padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border: none; border-radius: 8px 8px 0 0; cursor: pointer; font-family: 'Vazirmatn', sans-serif; font-size: 1rem; font-weight: 600; transition: all 0.3s;">
-          <i class="fas fa-book-open"></i> تاریخچه
-        </button>
-        <button id="peopleTabBtn" onclick="switchHistoryTab('people')" style="padding: 0.8rem 1.5rem; background: rgba(255,255,255,0.05); color: var(--text-light); border: 1px solid var(--card-border); border-radius: 8px 8px 0 0; cursor: pointer; font-family: 'Vazirmatn', sans-serif; font-size: 1rem; font-weight: 600; transition: all 0.3s;">
-          <i class="fas fa-users"></i> پیشگامان
-        </button>
-      </div>
+            {
+                id: 9,
+                title: "تاریخچه و پیشگامان",
+                type: "interactive",
+                timing: 5,
+                content: `
+                    <div class="slide-content">
+                        <h2><i class="fas fa-history" style="margin-right: 1rem;"></i>تاریخچه رگرسیون کوانتایل و پیشگامان</h2>
+                        
+                        <div style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid rgba(59, 130, 246, 0.3); padding-bottom: 0.5rem;">
+                            <button id="historyTabBtn" onclick="switchHistoryTab('history')" style="padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border: none; border-radius: 8px 8px 0 0; cursor: pointer; font-family: 'Vazirmatn', sans-serif; font-size: 1rem; font-weight: 600; transition: all 0.3s;">
+                                <i class="fas fa-book-open"></i> تاریخچه
+                            </button>
+                            <button id="peopleTabBtn" onclick="switchHistoryTab('people')" style="padding: 0.8rem 1.5rem; background: rgba(255,255,255,0.05); color: var(--text-light); border: 1px solid var(--card-border); border-radius: 8px 8px 0 0; cursor: pointer; font-family: 'Vazirmatn', sans-serif; font-size: 1rem; font-weight: 600; transition: all 0.3s;">
+                                <i class="fas fa-users"></i> پیشگامان
+                            </button>
+                        </div>
 
-      <div id="historyContent" style="display: block;">
-        <h3 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-timeline"></i> خط زمانی رگرسیون کوانتایل</h3>
-        <div style="position: relative; padding-right: 2rem; border-right: 3px solid var(--primary);">
-          
-          <div style="margin-bottom: 2rem; position: relative;">
-            <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--primary); border-radius: 50%; border: 3px solid var(--dark);"></div>
-            <div style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--primary);">
-              <h4 style="color: var(--primary); margin-bottom: 0.5rem;">۱۹۷۸ - تولد رگرسیون کوانتایل</h4>
-              <p>Roger Koenker و Gilbert Bassett مقاله تاریخی "Regression Quantiles" را در Econometrica منتشر کردند.</p>
-            </div>
-          </div>
+                        <div id="historyContent" style="display: block;">
+                            <h3 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-timeline"></i> خط زمانی رگرسیون کوانتایل</h3>
+                            <div style="position: relative; padding-right: 2rem; border-right: 3px solid var(--primary);">
+                                
+                                <div style="margin-bottom: 2rem; position: relative;">
+                                    <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--primary); border-radius: 50%; border: 3px solid var(--dark);"></div>
+                                    <div style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--primary);">
+                                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">۱۹۷۸ - تولد رگرسیون کوانتایل</h4>
+                                        <p>Roger Koenker و Gilbert Bassett مقاله تاریخی "Regression Quantiles" را در Econometrica منتشر کردند.</p>
+                                    </div>
+                                </div>
 
-          <div style="margin-bottom: 2rem; position: relative;">
-            <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--secondary); border-radius: 50%; border: 3px solid var(--dark);"></div>
-            <div style="background: rgba(139, 92, 246, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--secondary);">
-              <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">دهه ۱۹۸۰ - گسترش ناپارامتری</h4>
-              <p>توسعه روش‌های kernel-based و spline-based برای انعطاف‌پذیری بیشتر.</p>
-            </div>
-          </div>
+                                <div style="margin-bottom: 2rem; position: relative;">
+                                    <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--secondary); border-radius: 50%; border: 3px solid var(--dark);"></div>
+                                    <div style="background: rgba(139, 92, 246, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--secondary);">
+                                        <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">دهه ۱۹۸۰ - گسترش ناپارامتری</h4>
+                                        <p>توسعه روش‌های kernel-based و spline-based برای انعطاف‌پذیری بیشتر.</p>
+                                    </div>
+                                </div>
 
-          <div style="margin-bottom: 2rem; position: relative;">
-            <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--accent); border-radius: 50%; border: 3px solid var(--dark);"></div>
-            <div style="background: rgba(236, 72, 153, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--accent);">
-              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">دهه ۱۹۹۰ - پیشرفت‌های محاسباتی</h4>
-              <p>الگوریتم‌های کارآمدتر و نظریه آماری قوی‌تر برای رگرسیون کوانتایل ناپارامتریک.</p>
-            </div>
-          </div>
+                                <div style="margin-bottom: 2rem; position: relative;">
+                                    <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--accent); border-radius: 50%; border: 3px solid var(--dark);"></div>
+                                    <div style="background: rgba(236, 72, 153, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--accent);">
+                                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">دهه ۱۹۹۰ - پیشرفت‌های محاسباتی</h4>
+                                        <p>الگوریتم‌های کارآمدتر و نظریه آماری قوی‌تر برای رگرسیون کوانتایل ناپارامتریک.</p>
+                                    </div>
+                                </div>
 
-          <div style="position: relative;">
-            <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--success); border-radius: 50%; border: 3px solid var(--dark);"></div>
-            <div style="background: rgba(16, 185, 129, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--success);">
-              <h4 style="color: var(--success); margin-bottom: 0.5rem;">۲۰۰۰ تاکنون - عصر مدرن</h4>
-              <p>کاربردهای گسترده در یادگیری ماشین، اقتصاد، پزشکی. توسعه Deep Quantile Regression.</p>
-            </div>
-          </div>
+                                <div style="position: relative;">
+                                    <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--success); border-radius: 50%; border: 3px solid var(--dark);"></div>
+                                    <div style="background: rgba(16, 185, 129, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--success);">
+                                        <h4 style="color: var(--success); margin-bottom: 0.5rem;">۲۰۰۰ تاکنون - عصر مدرن</h4>
+                                        <p>کاربردهای گسترده در یادگیری ماشین، اقتصاد، پزشکی. توسعه Deep Quantile Regression.</p>
+                                    </div>
+                                </div>
 
-        </div>
+                            </div>
 
-        <div style="margin-top: 2rem; background: rgba(59, 130, 246, 0.1); border-right: 4px solid var(--primary); padding: 1.5rem; border-radius: 8px;">
-          <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-link"></i> منابع بیشتر</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin: 0.5rem 0;">
-              <a href="https://en.wikipedia.org/wiki/Quantile_regression" target="_blank" style="color: #60a5fa; text-decoration: none;">
-                <i class="fas fa-external-link-alt"></i> ویکی‌پدیا: Quantile Regression
-              </a>
-            </li>
-            <li style="margin: 0.5rem 0;">
-              <a href="https://www.jstor.org/stable/1913643" target="_blank" style="color: #60a5fa; text-decoration: none;">
-                <i class="fas fa-file-pdf"></i> مقاله اصلی Koenker & Bassett (1978)
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+                            <div style="margin-top: 2rem; background: rgba(59, 130, 246, 0.1); border-right: 4px solid var(--primary); padding: 1.5rem; border-radius: 8px;">
+                                <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-link"></i> منابع بیشتر</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="margin: 0.5rem 0;">
+                                        <a href="https://en.wikipedia.org/wiki/Quantile_regression" target="_blank" style="color: #60a5fa; text-decoration: none;">
+                                            <i class="fas fa-external-link-alt"></i> ویکی‌پدیا: Quantile Regression
+                                        </a>
+                                    </li>
+                                    <li style="margin: 0.5rem 0;">
+                                        <a href="https://www.jstor.org/stable/1913643" target="_blank" style="color: #60a5fa; text-decoration: none;">
+                                            <i class="fas fa-file-pdf"></i> مقاله اصلی Koenker & Bassett (1978)
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-      <div id="peopleContent" style="display: none;">
-        <h3 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-user-tie"></i> پیشگامان رگرسیون کوانتایل</h3>
-        
-        <div class="grid-2" style="gap: 2rem;">
-          
-          <div style="background: rgba(59, 130, 246, 0.05); border: 2px solid var(--primary); border-radius: 12px; padding: 1.5rem; display: flex; gap: 1.5rem;">
-            <div style="flex: 0 0 100px;">
-              <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);">
-                RK
-              </div>
-            </div>
-            <div style="flex: 1;">
-              <h4 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Roger Koenker</h4>
-              <p style="font-size: 0.95rem; opacity: 0.9; line-height: 1.6; margin-bottom: 1rem;">
-                استاد اقتصادسنجی و آمار در دانشگاه ایلینوی. بنیان‌گذار رگرسیون کوانتایل مدرن با مقاله انقلابی ۱۹۷۸. نویسنده کتاب‌های متعدد در این حوزه.
-              </p>
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="https://en.wikipedia.org/wiki/Quantile_regression" target="_blank" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem;">
-                  <i class="fas fa-external-link-alt"></i> ویکی‌پدیا
-                </a>
-              </div>
-            </div>
-          </div>
+                        <div id="peopleContent" style="display: none;">
+                            <h3 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-user-tie"></i> پیشگامان رگرسیون کوانتایل</h3>
+                            
+                            <div class="grid-2" style="gap: 2rem;">
+                                
+                                <div style="background: rgba(59, 130, 246, 0.05); border: 2px solid var(--primary); border-radius: 12px; padding: 1.5rem; display: flex; gap: 1.5rem;">
+                                    <div style="flex: 0 0 100px;">
+                                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);">
+                                            RK
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <h4 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Roger Koenker</h4>
+                                        <p style="font-size: 0.95rem; opacity: 0.9; line-height: 1.6; margin-bottom: 1rem;">
+                                            استاد اقتصادسنجی و آمار در دانشگاه ایلینوی. بنیان‌گذار رگرسیون کوانتایل مدرن با مقاله انقلابی ۱۹۷۸. نویسنده کتاب‌های متعدد در این حوزه.
+                                        </p>
+                                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                            <a href="https://en.wikipedia.org/wiki/Quantile_regression" target="_blank" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem;">
+                                                <i class="fas fa-external-link-alt"></i> ویکی‌پدیا
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
 
-          <div style="background: rgba(139, 92, 246, 0.05); border: 2px solid var(--secondary); border-radius: 12px; padding: 1.5rem; display: flex; gap: 1.5rem;">
-            <div style="flex: 0 0 100px;">
-              <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #8b5cf6, #ec4899); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);">
-                GB
-              </div>
-            </div>
-            <div style="flex: 1;">
-              <h4 style="color: var(--secondary); font-size: 1.3rem; margin-bottom: 0.5rem;">Gilbert Bassett Jr.</h4>
-              <p style="font-size: 0.95rem; opacity: 0.9; line-height: 1.6; margin-bottom: 1rem;">
-                اقتصاددان و استاد دانشگاه ایلینوی. همکار اصلی Koenker در توسعه رگرسیون کوانتایل. تحقیقات در اقتصادسنجی مالی و روش‌های قوی (Robust).
-              </p>
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="https://www.jstor.org/stable/1913643" target="_blank" style="padding: 0.5rem 1rem; background: var(--secondary); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem;">
-                  <i class="fas fa-file-pdf"></i> مقاله ۱۹۷۸
-                </a>
-              </div>
-            </div>
-          </div>
+                                <div style="background: rgba(139, 92, 246, 0.05); border: 2px solid var(--secondary); border-radius: 12px; padding: 1.5rem; display: flex; gap: 1.5rem;">
+                                    <div style="flex: 0 0 100px;">
+                                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #8b5cf6, #ec4899); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);">
+                                            GB
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <h4 style="color: var(--secondary); font-size: 1.3rem; margin-bottom: 0.5rem;">Gilbert Bassett Jr.</h4>
+                                        <p style="font-size: 0.95rem; opacity: 0.9; line-height: 1.6; margin-bottom: 1rem;">
+                                            اقتصاددان و استاد دانشگاه ایلینوی. همکار اصلی Koenker در توسعه رگرسیون کوانتایل. تحقیقات در اقتصادسنجی مالی و روش‌های قوی (Robust).
+                                        </p>
+                                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                            <a href="https://www.jstor.org/stable/1913643" target="_blank" style="padding: 0.5rem 1rem; background: var(--secondary); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem;">
+                                                <i class="fas fa-file-pdf"></i> مقاله ۱۹۷۸
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
 
-        </div>
+                            </div>
 
-        <div style="margin-top: 2rem; background: rgba(16, 185, 129, 0.1); border-right: 4px solid var(--success); padding: 1.5rem; border-radius: 8px;">
-          <h4 style="color: var(--success); margin-bottom: 0.5rem;"><i class="fas fa-lightbulb"></i> نکته مهم</h4>
-          <p style="line-height: 1.6;">
-            رگرسیون کوانتایل به لطف کار پایه‌گذار این دو محقق، امروزه یکی از ابزارهای استاندارد در تحلیل داده‌های پیچیده و ناهمگن است و در علوم مختلف از اقتصاد تا پزشکی کاربرد دارد.
-          </p>
-        </div>
-      </div>
+                            <div style="margin-top: 2rem; background: rgba(16, 185, 129, 0.1); border-right: 4px solid var(--success); padding: 1.5rem; border-radius: 8px;">
+                                <h4 style="color: var(--success); margin-bottom: 0.5rem;"><i class="fas fa-lightbulb"></i> نکته مهم</h4>
+                                <p style="line-height: 1.6;">
+                                    رگرسیون کوانتایل به لطف کار پایه‌گذار این دو محقق، امروزه یکی از ابزارهای استاندارد در تحلیل داده‌های پیچیده و ناهمگن است و در علوم مختلف از اقتصاد تا پزشکی کاربرد دارد.
+                                </p>
+                            </div>
+                        </div>
 
-    </div>
-  `,
-  notes: {
-    content: "اسلاید تعاملی با دو تب: تاریخچه و پیشگامان. روی تب‌ها کلیک کنید و محتوا را نشان دهید. تأکید کنید که Koenker & Bassett در ۱۹۷۸ این روش را معرفی کردند.",
-    timing: "۵ دقیقه",
-    tips: "حتماً روی لینک‌های ویکی‌پدیا اشاره کنید. تب‌ها را جابجا کنید تا تعاملی بودن را نشان دهید."
-  }
-},
-					// Switch between history tabs
-function switchHistoryTab(tab) {
-  const historyContent = document.getElementById('historyContent');
-  const peopleContent = document.getElementById('peopleContent');
-  const historyBtn = document.getElementById('historyTabBtn');
-  const peopleBtn = document.getElementById('peopleTabBtn');
-  
-  if (tab === 'history') {
-    historyContent.style.display = 'block';		    p
-		    historyBtn.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
-		    historyBtn.style.color = 'white';
-		    peopleBtn.style.background = 'rgba(255,255,255,0.05)';
-		    peopleBtn.style.color = 'var(--text-light)';
-		  } else {
-		    historyContent.style.display = 'none';
-		    peopleContent.style.display = 'block';
-		    historyBtn.style.background = 'rgba(255,255,255,0.05)';
-		    historyBtn.style.color = 'var(--text-light)';
-		    peopleBtn.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
-		    peopleBtn.style.color = 'white';
-		  }
-	},
+                    </div>
+                `,
+                notes: {
+                    content: "اسلاید تعاملی با دو تب: تاریخچه و پیشگامان. روی تب‌ها کلیک کنید و محتوا را نشان دهید. تأکید کنید که Koenker & Bassett در ۱۹۷۸ این روش را معرفی کردند.",
+                    timing: "۵ دقیقه",
+                    tips: "حتماً روی لینک‌های ویکی‌پدیا اشاره کنید. تب‌ها را جابجا کنید تا تعاملی بودن را نشان دهید."
+                }
+            },
+            {
+                id: 10,
+                title: "روش‌های بهینه‌سازی",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                    <h2><i class="fas fa-cogs" style="margin-right: 1rem;"></i>روش‌های بهینه‌سازی در رگرسیون کوانتایل</h2>
+                    
+                    <p style="font-size: 1.05rem; line-height: 1.9;">
+                        رگرسیون کوانتایل را می‌توان به صورت یک مسئله برنامه‌ریزی خطی فرموله کرد که اجازه می‌دهد از الگوریتم‌های قدرتمند بهینه‌سازی مثل Simplex و Interior Point استفاده کنیم.[web:25][web:35]
+                    </p>
 
-{
-  id: 10,
-  title: "روش‌های بهینه‌سازی",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="slide-content">
-      <h2><i class="fas fa-cogs" style="margin-right: 1rem;"></i>روش‌های بهینه‌سازی در رگرسیون کوانتایل</h2>
-      
-      <p style="font-size: 1.05rem; line-height: 1.9;">
-        رگرسیون کوانتایل را می‌توان به صورت یک مسئله برنامه‌ریزی خطی فرموله کرد که اجازه می‌دهد از الگوریتم‌های قدرتمند بهینه‌سازی مثل Simplex و Interior Point استفاده کنیم.[web:25][web:35]
-      </p>
+                    <div class="formula-box">
+                        <strong>فرم کلی مسئله:</strong><br>
+                        <span>min<sub>β</sub> Σ ρ<sub>τ</sub>(Yᵢ - Xᵢβ)</span><br><br>
+                        <strong>تابع زیان (Pinball Loss):</strong><br>
+                        ρ<sub>τ</sub>(u) = u(τ - I(u &lt; 0))<br><br>
+                        <strong>فرم LP استاندارد:</strong><br>
+                        min τ Σ rᵢ⁺ + (1-τ) Σ rᵢ⁻<br>
+                        s.t. Yᵢ - Xᵢβ = rᵢ⁺ - rᵢ⁻<br>
+                        rᵢ⁺, rᵢ⁻ ≥ 0
+                    </div>
 
-      <div class="formula-box">
-        <strong>فرم کلی مسئله:</strong><br>
-        <span>min<sub>β</sub> Σ ρ<sub>τ</sub>(Yᵢ - Xᵢβ)</span><br><br>
-        <strong>تابع زیان (Pinball Loss):</strong><br>
-        ρ<sub>τ</sub>(u) = u(τ - I(u &lt; 0))<br><br>
-        <strong>فرم LP استاندارد:</strong><br>
-        min τ Σ rᵢ⁺ + (1-τ) Σ rᵢ⁻<br>
-        s.t. Yᵢ - Xᵢβ = rᵢ⁺ - rᵢ⁻<br>
-        rᵢ⁺, rᵢ⁻ ≥ 0
-      </div>
+                    <div class="loss-function-demo">
+                        <p>رفتار تابع زیان برای سه کوانتایل مختلف:</p>
+                        <table class="mini-table">
+                        <tr>
+                            <th>u</th><th>ρ<sub>0.1</sub>(u)</th><th>ρ<sub>0.5</sub>(u)</th><th>ρ<sub>0.9</sub>(u)</th>
+                        </tr>
+                        <tr>
+                            <td>-2</td><td>1.8</td><td>1.0</td><td>0.2</td>
+                        </tr>
+                        <tr>
+                            <td>0</td><td>0</td><td>0</td><td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td><td>0.2</td><td>1.0</td><td>1.8</td>
+                        </tr>
+                        </table>
+                        <p style="font-size: 0.85rem; opacity: .8;">
+                        هر چه τ بزرگ‌تر باشد، خطاهای «زیر کوانتایل» جریمه بیشتری می‌گیرند.[web:35]
+                        </p>
+                    </div>
 
-      <div class="loss-function-demo">
-        <p>رفتار تابع زیان برای سه کوانتایل مختلف:</p>
-        <table class="mini-table">
-          <tr>
-            <th>u</th><th>ρ<sub>0.1</sub>(u)</th><th>ρ<sub>0.5</sub>(u)</th><th>ρ<sub>0.9</sub>(u)</th>
-          </tr>
-          <tr>
-            <td>-2</td><td>1.8</td><td>1.0</td><td>0.2</td>
-          </tr>
-          <tr>
-            <td>0</td><td>0</td><td>0</td><td>0</td>
-          </tr>
-          <tr>
-            <td>2</td><td>0.2</td><td>1.0</td><td>1.8</td>
-          </tr>
-        </table>
-        <p style="font-size: 0.85rem; opacity: .8;">
-          هر چه τ بزرگ‌تر باشد، خطاهای «زیر کوانتایل» جریمه بیشتری می‌گیرند.[web:35]
-        </p>
-      </div>
+                    <h3>الگوریتم‌های حل:</h3>
+                    <div class="grid-3">
+                        <div class="grid-card">
+                        <h3 style="color: #3b82f6; margin-top: 0;">Simplex</h3>
+                        <p style="font-size: 0.9rem;">
+                            الگوریتم کلاسیک LP؛ دقیق و مناسب ابعاد کوچک و متوسط.[web:25]
+                        </p>
+                        <p style="font-size: 0.8rem; opacity: 0.7;">مزیت: جواب دقیق، پیاده‌سازی成熟 در نرم‌افزارها.</p>
+                        </div>
+                        <div class="grid-card">
+                        <h3 style="color: #8b5cf6; margin-top: 0;">Interior Point</h3>
+                        <p style="font-size: 0.9rem;">
+                            روش نقاط داخلی؛ برای مسائل بزرگ‌تر سریع‌تر و مقیاس‌پذیرتر از Simplex است.[web:25]
+                        </p>
+                        <p style="font-size: 0.8rem; opacity: 0.7;">مزیت: مناسب Big Data و مسائل با متغیرهای زیاد.</p>
+                        </div>
+                        <div class="grid-card">
+                        <h3 style="color: #ec4899; margin-top: 0;">Gradient Descent</h3>
+                        <p style="font-size: 0.9rem;">
+                            حل تقریبی با به‌روزرسانی تکراری؛ مناسب یادگیری ماشین و داده‌های خیلی بزرگ.[web:18]
+                        </p>
+                        <p style="font-size: 0.8rem; opacity: 0.7;">مزیت: ساده، آنلاین، قابل اجرا روی GPU.</p>
+                        </div>
+                    </div>
 
-      <h3>الگوریتم‌های حل:</h3>
-      <div class="grid-3">
-        <div class="grid-card">
-          <h3 style="color: #3b82f6; margin-top: 0;">Simplex</h3>
-          <p style="font-size: 0.9rem;">
-            الگوریتم کلاسیک LP؛ دقیق و مناسب ابعاد کوچک و متوسط.[web:25]
-          </p>
-          <p style="font-size: 0.8rem; opacity: 0.7;">مزیت: جواب دقیق، پیاده‌سازی成熟 در نرم‌افزارها.</p>
-        </div>
-        <div class="grid-card">
-          <h3 style="color: #8b5cf6; margin-top: 0;">Interior Point</h3>
-          <p style="font-size: 0.9rem;">
-            روش نقاط داخلی؛ برای مسائل بزرگ‌تر سریع‌تر و مقیاس‌پذیرتر از Simplex است.[web:25]
-          </p>
-          <p style="font-size: 0.8rem; opacity: 0.7;">مزیت: مناسب Big Data و مسائل با متغیرهای زیاد.</p>
-        </div>
-        <div class="grid-card">
-          <h3 style="color: #ec4899; margin-top: 0;">Gradient Descent</h3>
-          <p style="font-size: 0.9rem;">
-            حل تقریبی با به‌روزرسانی تکراری؛ مناسب یادگیری ماشین و داده‌های خیلی بزرگ.[web:18]
-          </p>
-          <p style="font-size: 0.8rem; opacity: 0.7;">مزیت: ساده، آنلاین، قابل اجرا روی GPU.</p>
-        </div>
-      </div>
+                    <div class="data-table-wrapper">
+                        <table class="data-table">
+                        <thead>
+                            <tr>
+                            <th>معیار</th>
+                            <th>Simplex</th>
+                            <th>Interior Point</th>
+                            <th>Gradient Descent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>سرعت محاسباتی</td>
+                            <td>متوسط</td>
+                            <td>سریع</td>
+                            <td>خیلی سریع (تقریبی)</td>
+                            </tr>
+                            <tr>
+                            <td>دقت جواب</td>
+                            <td>بهینه دقیق</td>
+                            <td>بهینه دقیق</td>
+                            <td>بهینه تقریبی</td>
+                            </tr>
+                            <tr>
+                            <td>مقیاس‌پذیری</td>
+                            <td>برای n کوچک</td>
+                            <td>برای n متوسط/بزرگ</td>
+                            <td>برای n خیلی بزرگ</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
 
-      <div class="data-table-wrapper">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>معیار</th>
-              <th>Simplex</th>
-              <th>Interior Point</th>
-              <th>Gradient Descent</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>سرعت محاسباتی</td>
-              <td>متوسط</td>
-              <td>سریع</td>
-              <td>خیلی سریع (تقریبی)</td>
-            </tr>
-            <tr>
-              <td>دقت جواب</td>
-              <td>بهینه دقیق</td>
-              <td>بهینه دقیق</td>
-              <td>بهینه تقریبی</td>
-            </tr>
-            <tr>
-              <td>مقیاس‌پذیری</td>
-              <td>برای n کوچک</td>
-              <td>برای n متوسط/بزرگ</td>
-              <td>برای n خیلی بزرگ</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                    <div class="references">
+                        <h4>رفرنس‌ها:</h4>
+                        <div class="reference-item">
+                        Koenker, R. (2005). Quantile Regression. Cambridge University Press.[web:24]
+                        </div>
+                        <div class="reference-item">
+                        Koenker, R., & Bassett, G. (1978). Regression Quantiles. Econometrica.[web:42]
+                        </div>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "سه روش را از نظر سرعت، دقت و مقیاس‌پذیری مقایسه کن و روی فرم LP تاکید کن.",
+                    timing: "3 دقیقه",
+                    tips: "با یک مثال شهودی برای Pinball Loss شروع کن."
+                }
+            },
 
-      <div class="references">
-        <h4>رفرنس‌ها:</h4>
-        <div class="reference-item">
-          Koenker, R. (2005). Quantile Regression. Cambridge University Press.[web:24]
-        </div>
-        <div class="reference-item">
-          Koenker, R., & Bassett, G. (1978). Regression Quantiles. Econometrica.[web:42]
-        </div>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "سه روش را از نظر سرعت، دقت و مقیاس‌پذیری مقایسه کن و روی فرم LP تاکید کن.",
-    timing: "3 دقیقه",
-    tips: "با یک مثال شهودی برای Pinball Loss شروع کن."
-  }
-},
+            {
+                id: 11,
+                title: "درسی‌سازی",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                    <h2>درسی‌سازی (Regularization)</h2>
+                    <p style="font-size: 1.05rem;">
+                        درسی‌سازی برای کنترل پیچیدگی مدل و جلوگیری از بیش‌برازش در رگرسیون کوانتایل استفاده می‌شود، مخصوصاً وقتی تعداد متغیرها زیاد است.[web:5][web:18]
+                    </p>
 
-{
-  id: 11,
-  title: "درسی‌سازی",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="slide-content">
-      <h2>درسی‌سازی (Regularization)</h2>
-      <p style="font-size: 1.05rem;">
-        درسی‌سازی برای کنترل پیچیدگی مدل و جلوگیری از بیش‌برازش در رگرسیون کوانتایل استفاده می‌شود، مخصوصاً وقتی تعداد متغیرها زیاد است.[web:5][web:18]
-      </p>
+                    <div class="grid-3">
+                        <div class="grid-card">
+                        <h3 style="color:#ec4899;">L1 (LASSO)</h3>
+                        <p style="font-size:0.9rem;">
+                            اضافه کردن λ Σ |βⱼ| باعث صفر شدن بعضی ضرایب و انتخاب متغیر می‌شود.[web:5]
+                        </p>
+                        <p style="font-size:0.8rem;opacity:.7;">خوب برای مدل‌های تنک (Sparse).</p>
+                        </div>
+                        <div class="grid-card">
+                        <h3 style="color:#3b82f6;">L2 (Ridge)</h3>
+                        <p style="font-size:0.9rem;">
+                            اضافه کردن λ Σ βⱼ² ضرایب را کوچک می‌کند و با هم‌خطی مقابله می‌کند.[web:5]
+                        </p>
+                        <p style="font-size:0.8rem;opacity:.7;">خوب برای Multicollinearity.</p>
+                        </div>
+                        <div class="grid-card">
+                        <h3 style="color:#10b981;">Elastic Net</h3>
+                        <p style="font-size:0.9rem;">
+                            ترکیبی از L1 و L2؛ تعادل بین انتخاب متغیر و پایداری ضرایب.[web:5]
+                        </p>
+                        <p style="font-size:0.8rem;opacity:.7;">در عمل بیشترین استفاده را دارد.</p>
+                        </div>
+                    </div>
 
-      <div class="grid-3">
-        <div class="grid-card">
-          <h3 style="color:#ec4899;">L1 (LASSO)</h3>
-          <p style="font-size:0.9rem;">
-            اضافه کردن λ Σ |βⱼ| باعث صفر شدن بعضی ضرایب و انتخاب متغیر می‌شود.[web:5]
-          </p>
-          <p style="font-size:0.8rem;opacity:.7;">خوب برای مدل‌های تنک (Sparse).</p>
-        </div>
-        <div class="grid-card">
-          <h3 style="color:#3b82f6;">L2 (Ridge)</h3>
-          <p style="font-size:0.9rem;">
-            اضافه کردن λ Σ βⱼ² ضرایب را کوچک می‌کند و با هم‌خطی مقابله می‌کند.[web:5]
-          </p>
-          <p style="font-size:0.8rem;opacity:.7;">خوب برای Multicollinearity.</p>
-        </div>
-        <div class="grid-card">
-          <h3 style="color:#10b981;">Elastic Net</h3>
-          <p style="font-size:0.9rem;">
-            ترکیبی از L1 و L2؛ تعادل بین انتخاب متغیر و پایداری ضرایب.[web:5]
-          </p>
-          <p style="font-size:0.8rem;opacity:.7;">در عمل بیشترین استفاده را دارد.</p>
-        </div>
-      </div>
+                    <div class="highlight-quote">
+                        در رگرسیون کوانتایل با ابعاد بالا، بدون Regularization مدل به‌راحتی بیش‌برازش می‌کند.[web:5]
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "L1 → انتخاب متغیر، L2 → پایداری، Elastic Net → ترکیب هر دو.",
+                    timing: "3 دقیقه",
+                    tips: "یک مثال ساده بزن که چطور L1 بعضی ضرایب را صفر می‌کند."
+                }
+            },
 
-      <div class="highlight-quote">
-        در رگرسیون کوانتایل با ابعاد بالا، بدون Regularization مدل به‌راحتی بیش‌برازش می‌کند.[web:5]
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "L1 → انتخاب متغیر، L2 → پایداری، Elastic Net → ترکیب هر دو.",
-    timing: "3 دقیقه",
-    tips: "یک مثال ساده بزن که چطور L1 بعضی ضرایب را صفر می‌کند."
-  }
-},
+            {
+                id: 12,
+                title: "انتخاب Bandwidth",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                    <h2>انتخاب Bandwidth</h2>
+                    <p style="font-size:1.05rem;">
+                        در رگرسیون کوانتایل غیرپارامتری (مثلاً با Kernel)، پارامتر Bandwidth میزان هموارسازی را کنترل می‌کند.[web:19]
+                    </p>
+                    <div class="info-box">
+                        <strong>موازنه اصلی:</strong>
+                        <ul class="enhanced-list">
+                        <li>Bandwidth خیلی کوچک → مدل پرنویز، Overfitting.</li>
+                        <li>Bandwidth خیلی بزرگ → مدل بیش از حد صاف، Underfitting.</li>
+                        </ul>
+                    </div>
+                    <p style="font-size:0.95rem;">
+                        معمولاً از Cross-validation برای انتخاب Bandwidth بهینه استفاده می‌شود تا خطای پیش‌بینی حداقل شود.[web:19]
+                    </p>
+                    </div>
+                `,
+                notes: {
+                    content: "توضیح کیفی Underfitting/Overfitting و اشاره به Cross-validation.",
+                    timing: "3 دقیقه",
+                    tips: "اگر وقت بود یک نمودار شماتیک از bandwidth کوچک/بزرگ نشان بده."
+                }
+            },
 
-{
-  id: 12,
-  title: "انتخاب Bandwidth",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="slide-content">
-      <h2>انتخاب Bandwidth</h2>
-      <p style="font-size:1.05rem;">
-        در رگرسیون کوانتایل غیرپارامتری (مثلاً با Kernel)، پارامتر Bandwidth میزان هموارسازی را کنترل می‌کند.[web:19]
-      </p>
-      <div class="info-box">
-        <strong>موازنه اصلی:</strong>
-        <ul class="enhanced-list">
-          <li>Bandwidth خیلی کوچک → مدل پرنویز، Overfitting.</li>
-          <li>Bandwidth خیلی بزرگ → مدل بیش از حد صاف، Underfitting.</li>
-        </ul>
-      </div>
-      <p style="font-size:0.95rem;">
-        معمولاً از Cross-validation برای انتخاب Bandwidth بهینه استفاده می‌شود تا خطای پیش‌بینی حداقل شود.[web:19]
-      </p>
-    </div>
-  `,
-  notes: {
-    content: "توضیح کیفی Underfitting/Overfitting و اشاره به Cross-validation.",
-    timing: "3 دقیقه",
-    tips: "اگر وقت بود یک نمودار شماتیک از bandwidth کوچک/بزرگ نشان بده."
-  }
-},
+            {
+                id: 13,
+                title: "رگرسیون کوانتایل محلی",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                    <h2>رگرسیون کوانتایل محلی</h2>
+                    <p style="font-size:1.05rem;">
+                        در رگرسیون کوانتایل محلی (Local QR)، به جای یک رابطه جهانی، برای هر نقطه با وزن‌دهی Kernel یک مدل محلی برازش می‌شود.[web:19]
+                    </p>
+                    <p style="font-size:0.95rem;">
+                        توابع Kernel رایج شامل Gaussian و Epanechnikov هستند که وزن مشاهدات نزدیک را بیشتر و دورتر را کمتر می‌کنند.[web:19]
+                    </p>
+                    </div>
+                `,
+                notes: {
+                    content: "Local QR + Kernel (Gaussian, Epanechnikov).",
+                    timing: "3 دقیقه",
+                    tips: "مقایسه کوتاه بین مدل خطی جهانی و مدل محلی قابل‌انعطاف."
+                }
+            },
 
-{
-  id: 13,
-  title: "رگرسیون کوانتایل محلی",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="slide-content">
-      <h2>رگرسیون کوانتایل محلی</h2>
-      <p style="font-size:1.05rem;">
-        در رگرسیون کوانتایل محلی (Local QR)، به جای یک رابطه جهانی، برای هر نقطه با وزن‌دهی Kernel یک مدل محلی برازش می‌شود.[web:19]
-      </p>
-      <p style="font-size:0.95rem;">
-        توابع Kernel رایج شامل Gaussian و Epanechnikov هستند که وزن مشاهدات نزدیک را بیشتر و دورتر را کمتر می‌کنند.[web:19]
-      </p>
-    </div>
-  `,
-  notes: {
-    content: "Local QR + Kernel (Gaussian, Epanechnikov).",
-    timing: "3 دقیقه",
-    tips: "مقایسه کوتاه بین مدل خطی جهانی و مدل محلی قابل‌انعطاف."
-  }
-},
+            {
+                id: 14,
+                title: "Splines و هموارسازی",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                    <h2>Splines و هموارسازی</h2>
+                    <p style="font-size:1.05rem;">
+                        Splines‌ها منحنی‌های قطعه‌ای چندجمله‌ای هستند که امکان مدل‌سازی روابط غیرخطی انعطاف‌پذیر را در رگرسیون کوانتایل می‌دهند.[web:19]
+                    </p>
+                    <p style="font-size:0.95rem;">
+                        در عمل از Regression Splines و Smoothing Splines استفاده می‌شود و تعداد Knots شدت انعطاف‌پذیری را تعیین می‌کند.[web:19]
+                    </p>
+                    </div>
+                `,
+                notes: {
+                    content: "تفاوت Regression Splines و Smoothing Splines را بگو.",
+                    timing: "3 دقیقه",
+                    tips: "بگو Knots زیاد → پرنویز، Knots کم → صاف."
+                }
+            },
 
-{
-  id: 14,
-  title: "Splines و هموارسازی",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="slide-content">
-      <h2>Splines و هموارسازی</h2>
-      <p style="font-size:1.05rem;">
-        Splines‌ها منحنی‌های قطعه‌ای چندجمله‌ای هستند که امکان مدل‌سازی روابط غیرخطی انعطاف‌پذیر را در رگرسیون کوانتایل می‌دهند.[web:19]
-      </p>
-      <p style="font-size:0.95rem;">
-        در عمل از Regression Splines و Smoothing Splines استفاده می‌شود و تعداد Knots شدت انعطاف‌پذیری را تعیین می‌کند.[web:19]
-      </p>
-    </div>
-  `,
-  notes: {
-    content: "تفاوت Regression Splines و Smoothing Splines را بگو.",
-    timing: "3 دقیقه",
-    tips: "بگو Knots زیاد → پرنویز، Knots کم → صاف."
-  }
-},
+            {
+                id: 15,
+                title: "محدودیت عدم تقاطع",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                    <h2>محدودیت عدم تقاطع</h2>
+                    <p style="font-size:1.05rem;">
+                        به طور منطقی، اگر τ₁ &lt; τ₂ باشد، باید برای هر x داشته باشیم Q<sub>τ₁</sub>(x) ≤ Q<sub>τ₂</sub>(x)؛ در غیر این صورت کوانتایل‌ها یکدیگر را قطع کرده‌اند.[web:33][web:36]
+                    </p>
 
-{
-  id: 15,
-  title: "محدودیت عدم تقاطع",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="slide-content">
-      <h2>محدودیت عدم تقاطع</h2>
-      <p style="font-size:1.05rem;">
-        به طور منطقی، اگر τ₁ &lt; τ₂ باشد، باید برای هر x داشته باشیم Q<sub>τ₁</sub>(x) ≤ Q<sub>τ₂</sub>(x)؛ در غیر این صورت کوانتایل‌ها یکدیگر را قطع کرده‌اند.[web:33][web:36]
-      </p>
+                    <div class="warning-box">
+                        <strong>مشکل:</strong>
+                        <p>برآورد جداگانه برای هر τ ممکن است به منحنی‌های کوانتایل متقاطع (Quantile Crossing) منجر شود.[web:33]</p>
+                    </div>
 
-      <div class="warning-box">
-        <strong>مشکل:</strong>
-        <p>برآورد جداگانه برای هر τ ممکن است به منحنی‌های کوانتایل متقاطع (Quantile Crossing) منجر شود.[web:33]</p>
-      </div>
+                    <div class="success-box">
+                        <strong>راه‌حل‌های رایج:</strong>
+                        <ul class="enhanced-list">
+                        <li>استفاده از Rearrangement (مرتب‌سازی مونوتون) روی منحنی‌های کوانتایل برآوردشده.[web:36]</li>
+                        <li>افزودن محدودیت‌های یکنواختی در بهینه‌سازی (Monotonicity Constraints).[web:36]</li>
+                        <li>تصحیح پس از برآورد (Post-hoc Correction).</li>
+                        </ul>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "برای τ₁ < τ₂: Q_τ₁ ≤ Q_τ₂. Chernozhukov et al. (2010) را به عنوان رفرنس بگو.",
+                    timing: "3 دقیقه",
+                    tips: "با یک نمودار ذهنی از سه کوانتایل که از هم رد می‌شوند شروع کن."
+                }
+            },
 
-      <div class="success-box">
-        <strong>راه‌حل‌های رایج:</strong>
-        <ul class="enhanced-list">
-          <li>استفاده از Rearrangement (مرتب‌سازی مونوتون) روی منحنی‌های کوانتایل برآوردشده.[web:36]</li>
-          <li>افزودن محدودیت‌های یکنواختی در بهینه‌سازی (Monotonicity Constraints).[web:36]</li>
-          <li>تصحیح پس از برآورد (Post-hoc Correction).</li>
-        </ul>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "برای τ₁ < τ₂: Q_τ₁ ≤ Q_τ₂. Chernozhukov et al. (2010) را به عنوان رفرنس بگو.",
-    timing: "3 دقیقه",
-    tips: "با یک نمودار ذهنی از سه کوانتایل که از هم رد می‌شوند شروع کن."
-  }
-},
+            {
+                id: 16,
+                title: "مثال عملی ۱",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                    <h2>مثال ۱: داده‌های شبیه‌سازی شده</h2>
+                    <p style="font-size:1.05rem;">
+                        مدل شبیه‌سازی: Y = 1 + 1.5X + ε که ε از توزیع Laplace (دارای دنباله‌های سنگین) است.[web:19]
+                    </p>
+                    <p style="font-size:0.95rem;">
+                        در چنین حالتی، رگرسیون OLS شدیداً تحت تأثیر نقاط دورافتاده قرار می‌گیرد، در حالی‌که رگرسیون کوانتایل برای میانه و کوانتایل‌های دیگر پایدارتر است.[web:35]
+                    </p>
+                    </div>
+                `,
+                notes: {
+                    content: "نشان بده که خطوط کوانتایل در میانه و دنباله‌ها چگونه رفتار متفاوتی نسبت به OLS دارند.",
+                    timing: "3 دقیقه",
+                    tips: "اگر نمودار داری، روی outlierها زوم کن."
+                }
+            },
 
-{
-  id: 16,
-  title: "مثال عملی ۱",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="slide-content">
-      <h2>مثال ۱: داده‌های شبیه‌سازی شده</h2>
-      <p style="font-size:1.05rem;">
-        مدل شبیه‌سازی: Y = 1 + 1.5X + ε که ε از توزیع Laplace (دارای دنباله‌های سنگین) است.[web:19]
-      </p>
-      <p style="font-size:0.95rem;">
-        در چنین حالتی، رگرسیون OLS شدیداً تحت تأثیر نقاط دورافتاده قرار می‌گیرد، در حالی‌که رگرسیون کوانتایل برای میانه و کوانتایل‌های دیگر پایدارتر است.[web:35]
-      </p>
-    </div>
-  `,
-  notes: {
-    content: "نشان بده که خطوط کوانتایل در میانه و دنباله‌ها چگونه رفتار متفاوتی نسبت به OLS دارند.",
-    timing: "3 دقیقه",
-    tips: "اگر نمودار داری، روی outlierها زوم کن."
-  }
-},
+            {
+                id: 17,
+                title: "مثال عملی ۲",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                    <h2>مثال ۲: داده‌های واقعی</h2>
+                    <p style="font-size:1.05rem;">
+                        یک مثال کلاسیک، رابطه بین درآمد خانوار و سهم هزینه غذا (Engel Curve) است.[web:35]
+                    </p>
+                    <p style="font-size:0.95rem;">
+                        رگرسیون کوانتایل نشان می‌دهد که حساسیت سهم هزینه غذا به درآمد در کوانتایل‌های پایین و بالا متفاوت است و این تفاوت با OLS پنهان می‌ماند.[web:35]
+                    </p>
+                    </div>
+                `,
+                notes: {
+                    content: "به مقاله Koenker & Hallock (2001, JEP) اشاره کن.",
+                    timing: "3 دقیقه",
+                    tips: "برای هر τ تفسیر اقتصادی بده."
+                }
+            },
 
-{
-  id: 17,
-  title: "مثال عملی ۲",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="slide-content">
-      <h2>مثال ۲: داده‌های واقعی</h2>
-      <p style="font-size:1.05rem;">
-        یک مثال کلاسیک، رابطه بین درآمد خانوار و سهم هزینه غذا (Engel Curve) است.[web:35]
-      </p>
-      <p style="font-size:0.95rem;">
-        رگرسیون کوانتایل نشان می‌دهد که حساسیت سهم هزینه غذا به درآمد در کوانتایل‌های پایین و بالا متفاوت است و این تفاوت با OLS پنهان می‌ماند.[web:35]
-      </p>
-    </div>
-  `,
-  notes: {
-    content: "به مقاله Koenker & Hallock (2001, JEP) اشاره کن.",
-    timing: "3 دقیقه",
-    tips: "برای هر τ تفسیر اقتصادی بده."
-  }
-},
+            {
+                id: 18,
+                title: "مقایسه با OLS",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                    <h2>مقایسه با OLS</h2>
+                    <p style="font-size:1.05rem;">
+                        رگرسیون کوانتایل را می‌توان به عنوان تعمیم OLS از «میانگین شرطی» به «کوانتایل‌های شرطی مختلف» دید.[web:19][web:35]
+                    </p>
+                    <div class="data-table-wrapper">
+                        <table class="data-table">
+                        <thead>
+                            <tr>
+                            <th>ویژگی</th>
+                            <th>OLS</th>
+                            <th>رگرسیون کوانتایل</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>هدف</td>
+                            <td>برآورد E[Y|X]</td>
+                            <td>برآورد Q<sub>τ</sub>(Y|X) برای τهای مختلف</td>
+                            </tr>
+                            <tr>
+                            <td>تابع زیان</td>
+                            <td>مجموع مربعات خطا</td>
+                            <td>مجموع زیان کوانتایلی (Pinball Loss)</td>
+                            </tr>
+                            <tr>
+                            <td>حساسیت به Outliers</td>
+                            <td>خیلی حساس</td>
+                            <td>مقاوم‌تر، مخصوصاً برای میانه</td>
+                            </tr>
+                            <tr>
+                            <td>فرض توزیع خطا</td>
+                            <td>تقریباً نرمال</td>
+                            <td>بدون فرض خاص</td>
+                            </tr>
+                            <tr>
+                            <td>ناهمسانی واریانس</td>
+                            <td>مشکل</td>
+                            <td>قابلیت مدل‌سازی مستقیم</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    <div class="highlight-quote">
+                        OLS یک عدد (میانگین) می‌دهد، اما رگرسیون کوانتایل یک «خانواده» از خطوط برای کل توزیع پاسخ ارائه می‌کند.[web:35]
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "۶ معیار مقایسه؛ روی مقاوم بودن QR و مدل‌کردن دنباله‌ها تاکید کن.",
+                    timing: "3 دقیقه",
+                    tips: "اگر نمودار داری، خط OLS و چند خط کوانتایل را هم‌زمان نشان بده."
+                }
+            },
 
-{
-  id: 18,
-  title: "مقایسه با OLS",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="slide-content">
-      <h2>مقایسه با OLS</h2>
-      <p style="font-size:1.05rem;">
-        رگرسیون کوانتایل را می‌توان به عنوان تعمیم OLS از «میانگین شرطی» به «کوانتایل‌های شرطی مختلف» دید.[web:19][web:35]
-      </p>
-      <div class="data-table-wrapper">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>ویژگی</th>
-              <th>OLS</th>
-              <th>رگرسیون کوانتایل</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>هدف</td>
-              <td>برآورد E[Y|X]</td>
-              <td>برآورد Q<sub>τ</sub>(Y|X) برای τهای مختلف</td>
-            </tr>
-            <tr>
-              <td>تابع زیان</td>
-              <td>مجموع مربعات خطا</td>
-              <td>مجموع زیان کوانتایلی (Pinball Loss)</td>
-            </tr>
-            <tr>
-              <td>حساسیت به Outliers</td>
-              <td>خیلی حساس</td>
-              <td>مقاوم‌تر، مخصوصاً برای میانه</td>
-            </tr>
-            <tr>
-              <td>فرض توزیع خطا</td>
-              <td>تقریباً نرمال</td>
-              <td>بدون فرض خاص</td>
-            </tr>
-            <tr>
-              <td>ناهمسانی واریانس</td>
-              <td>مشکل</td>
-              <td>قابلیت مدل‌سازی مستقیم</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="highlight-quote">
-        OLS یک عدد (میانگین) می‌دهد، اما رگرسیون کوانتایل یک «خانواده» از خطوط برای کل توزیع پاسخ ارائه می‌کند.[web:35]
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "۶ معیار مقایسه؛ روی مقاوم بودن QR و مدل‌کردن دنباله‌ها تاکید کن.",
-    timing: "3 دقیقه",
-    tips: "اگر نمودار داری، خط OLS و چند خط کوانتایل را هم‌زمان نشان بده."
-  }
-},
+            {
+                id: 19,
+                title: "معماری پروژه",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>معماری پروژه</h2>
+                    <p style="font-size:1.05rem;">
+                        کد پروژه به‌صورت ماژولار و قابل نگه‌داری سازمان‌دهی شده است تا بتوان به‌راحتی بخش‌های آماری، مصورسازی و UI را توسعه داد.[web:59][web:50]
+                    </p>
+                    <div class="data-table-wrapper">
+                        <table class="data-table">
+                        <thead>
+                            <tr>
+                            <th>فولدر</th>
+                            <th>محتوا</th>
+                            <th>نقش</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td><code>/core</code></td>
+                            <td>توابع اصلی رگرسیون کوانتایل و بهینه‌سازی.</td>
+                            <td>هسته محاسباتی مدل.</td>
+                            </tr>
+                            <tr>
+                            <td><code>/data</code></td>
+                            <td>اسکریپت آماده‌سازی و پاک‌سازی داده‌ها.</td>
+                            <td>ورودی تمیز برای مدل‌ها.</td>
+                            </tr>
+                            <tr>
+                            <td><code>/viz</code></td>
+                            <td>کدهای رسم نمودار کوانتایل‌ها، مقایسه با OLS و نمودار با نقاط دورافتاده.[web:59]</td>
+                            <td>مصورسازی نتایج.</td>
+                            </tr>
+                            <tr>
+                            <td><code>/ui</code></td>
+                            <td>کامپوننت‌های رابط کاربری (اسلایدها، کنترل‌ها، فرم‌ها).</td>
+                            <td>تعامل با کاربر.</td>
+                            </tr>
+                            <tr>
+                            <td><code>/config</code></td>
+                            <td>تنظیمات کوانتایل‌ها، پارامترهای بهینه‌سازی، استایل‌ها.</td>
+                            <td>قابلیت تنظیم آسان.</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    <div class="info-box">
+                        <strong>نکته:</strong>
+                        <p>
+                        جداسازی <code>core</code>، <code>viz</code> و <code>ui</code> باعث می‌شود بتوان در آینده الگوریتم‌ها یا رابط کاربری را بدون تداخل با بقیه بخش‌ها ارتقا داد.[web:59]
+                        </p>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "ساختار فولدرها و جدا بودن core, viz, ui را برجسته کن.",
+                    timing: "3 دقیقه",
+                    tips: "تأکید کن این معماری توسعه آینده را آسان می‌کند."
+                }
+            },
 
-{
-  id: 19,
-  title: "معماری پروژه",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>معماری پروژه</h2>
-      <p style="font-size:1.05rem;">
-        کد پروژه به‌صورت ماژولار و قابل نگه‌داری سازمان‌دهی شده است تا بتوان به‌راحتی بخش‌های آماری، مصورسازی و UI را توسعه داد.[web:59][web:50]
-      </p>
-      <div class="data-table-wrapper">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>فولدر</th>
-              <th>محتوا</th>
-              <th>نقش</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>/core</code></td>
-              <td>توابع اصلی رگرسیون کوانتایل و بهینه‌سازی.</td>
-              <td>هسته محاسباتی مدل.</td>
-            </tr>
-            <tr>
-              <td><code>/data</code></td>
-              <td>اسکریپت آماده‌سازی و پاک‌سازی داده‌ها.</td>
-              <td>ورودی تمیز برای مدل‌ها.</td>
-            </tr>
-            <tr>
-              <td><code>/viz</code></td>
-              <td>کدهای رسم نمودار کوانتایل‌ها، مقایسه با OLS و نمودار با نقاط دورافتاده.[web:59]</td>
-              <td>مصورسازی نتایج.</td>
-            </tr>
-            <tr>
-              <td><code>/ui</code></td>
-              <td>کامپوننت‌های رابط کاربری (اسلایدها، کنترل‌ها، فرم‌ها).</td>
-              <td>تعامل با کاربر.</td>
-            </tr>
-            <tr>
-              <td><code>/config</code></td>
-              <td>تنظیمات کوانتایل‌ها، پارامترهای بهینه‌سازی، استایل‌ها.</td>
-              <td>قابلیت تنظیم آسان.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="info-box">
-        <strong>نکته:</strong>
-        <p>
-          جداسازی <code>core</code>، <code>viz</code> و <code>ui</code> باعث می‌شود بتوان در آینده الگوریتم‌ها یا رابط کاربری را بدون تداخل با بقیه بخش‌ها ارتقا داد.[web:59]
-        </p>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "ساختار فولدرها و جدا بودن core, viz, ui را برجسته کن.",
-    timing: "3 دقیقه",
-    tips: "تأکید کن که این معماری توسعه آینده را آسان می‌کند."
-  }
-},
+            {
+                id: 20,
+                title: "الگوهای طراحی",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>الگوهای طراحی در پیاده‌سازی</h2>
+                    <p style="font-size:1.05rem;">
+                        برای نگه‌داری و توسعه آسان‌تر کد، از چند الگوی طراحی ساده و شناخته‌شده استفاده شده است.[web:59]
+                    </p>
+                    <div class="comparison-section">
+                        <div class="comparison-box">
+                        <h4>Singleton</h4>
+                        <ul>
+                            <li>یک شیء تنظیمات جهانی (config) که فقط یک‌بار ساخته می‌شود.</li>
+                            <li>استفاده مشترک در تمام ماژول‌ها بدون تکرار تنظیمات.</li>
+                        </ul>
+                        </div>
+                        <div class="comparison-box">
+                        <h4>Observer</h4>
+                        <ul>
+                            <li>به‌روزرسانی خودکار نمودارها و UI وقتی نتایج مدل تغییر می‌کند.</li>
+                            <li>جدا کردن منطق مدل از لایه نمایش.</li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-section">
+                        <div class="comparison-box">
+                        <h4>Factory</h4>
+                        <ul>
+                            <li>ساخت نمونه‌های مختلف مدل (OLS، QR، QR با Regularization) با یک اینترفیس واحد.</li>
+                            <li>افزودن مدل‌های جدید بدون تغییر کد مصرف‌کننده.</li>
+                        </ul>
+                        </div>
+                        <div class="comparison-box">
+                        <h4>مزیت کلی</h4>
+                        <ul>
+                            <li>کاهش کد تکراری و ساده‌تر شدن نگه‌داری.</li>
+                            <li>آمادگی بهتر برای توسعه‌های آینده.</li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="code-snippet">
+                        <span class="comment">// مثال ساده Factory برای انتخاب مدل</span><br>
+                        <span class="keyword">function</span> <span class="string">createModel</span>(type) {<br>
+                        &nbsp;&nbsp;<span class="keyword">if</span> (type === 'ols') <span class="keyword">return</span> new OLSModel();<br>
+                        &nbsp;&nbsp;<span class="keyword">if</span> (type === 'qr') <span class="keyword">return</span> new QuantileRegressionModel();<br>
+                        &nbsp;&nbsp;<span class="keyword">if</span> (type === 'qr_penalized') <span class="keyword">return</span> new PenalizedQRModel();<br>
+                        }<br>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "Singleton، Observer، Factory را با مثال ساده UI/Model توضیح بده.",
+                    timing: "3 دقیقه",
+                    tips: "تأکید کن این‌ها فقط الگوهای ساده‌اند نه پیچیدگی اضافی."
+                }
+            },
 
-{
-  id: 20,
-  title: "الگوهای طراحی",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>الگوهای طراحی در پیاده‌سازی</h2>
-      <p style="font-size:1.05rem;">
-        برای نگه‌داری و توسعه آسان‌تر کد، از چند الگوی طراحی ساده و شناخته‌شده استفاده شده است.[web:59]
-      </p>
-      <div class="comparison-section">
-        <div class="comparison-box">
-          <h4>Singleton</h4>
-          <ul>
-            <li>یک شیء تنظیمات جهانی (config) که فقط یک‌بار ساخته می‌شود.</li>
-            <li>استفاده مشترک در تمام ماژول‌ها بدون تکرار تنظیمات.</li>
-          </ul>
-        </div>
-        <div class="comparison-box">
-          <h4>Observer</h4>
-          <ul>
-            <li>به‌روزرسانی خودکار نمودارها و UI وقتی نتایج مدل تغییر می‌کند.</li>
-            <li>جدا کردن منطق مدل از لایه نمایش.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="comparison-section">
-        <div class="comparison-box">
-          <h4>Factory</h4>
-          <ul>
-            <li>ساخت نمونه‌های مختلف مدل (OLS، QR، QR با Regularization) با یک اینترفیس واحد.</li>
-            <li>افزودن مدل‌های جدید بدون تغییر کد مصرف‌کننده.</li>
-          </ul>
-        </div>
-        <div class="comparison-box">
-          <h4>مزیت کلی</h4>
-          <ul>
-            <li>کاهش کد تکراری و ساده‌تر شدن نگه‌داری.</li>
-            <li>آمادگی بهتر برای توسعه‌های آینده.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="code-snippet">
-        <span class="comment">// مثال ساده Factory برای انتخاب مدل</span><br>
-        <span class="keyword">function</span> <span class="string">createModel</span>(type) {<br>
-        &nbsp;&nbsp;<span class="keyword">if</span> (type === 'ols') <span class="keyword">return</span> new OLSModel();<br>
-        &nbsp;&nbsp;<span class="keyword">if</span> (type === 'qr') <span class="keyword">return</span> new QuantileRegressionModel();<br>
-        &nbsp;&nbsp;<span class="keyword">if</span> (type === 'qr_penalized') <span class="keyword">return</span> new PenalizedQRModel();<br>
-        }<br>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "Singleton، Observer، Factory را با مثال ساده UI/Model توضیح بده.",
-    timing: "3 دقیقه",
-    tips: "تأکید کن این‌ها فقط الگوهای ساده‌اند نه پیچیدگی اضافی."
-  }
-},
+            {
+                id: 21,
+                title: "بهینه‌سازی عملکرد",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>بهینه‌سازی عملکرد</h2>
+                    <p style="font-size:1.05rem;">
+                        در پیاده‌سازی تعاملی رگرسیون کوانتایل (مثلاً در وب)، علاوه بر الگوریتم بهینه‌سازی، باید به کارایی اجرای کد در مرورگر هم فکر کنیم.[web:59]
+                    </p>
+                    <ul class="enhanced-list">
+                        <li><strong>Lazy Loading:</strong> بارگذاری ماژول‌های سنگین مثل نمودارها فقط هنگام نیاز.</li>
+                        <li><strong>Caching:</strong> ذخیره نتایج مدل برای τهای پرتکرار (مثلاً 0.1، 0.5، 0.9) و استفاده مجدد.</li>
+                        <li><strong>Debouncing:</strong> وقتی کاربر اسلایدر τ را سریع حرکت می‌دهد، محاسبه فقط بعد از مکث کوتاه انجام شود.</li>
+                        <li><strong>Memoization:</strong> اگر داده و τ عوض نشده‌اند، حل LP را تکرار نکن و از نتیجه قبلی استفاده کن.</li>
+                    </ul>
+                    <div class="warning-box">
+                        <strong>مثال:</strong>
+                        <p>
+                        اگر کاربر اسلایدر را چندین بار در ثانیه جابه‌جا کند، Debounce و Memoization مانع اجرای ده‌ها حل LP غیرضروری می‌شوند و تجربه کاربری را بهتر می‌کنند.[web:59]
+                        </p>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "چهار تکنیک: Lazy Loading، Caching، Debouncing، Memoization.",
+                    timing: "3 دقیقه",
+                    tips: "مثال بزن که اگر کاربر سریع τ را تکان می‌دهد، Debounce جلوی فشار محاسباتی را می‌گیرد."
+                }
+            },
 
-{
-  id: 21,
-  title: "بهینه‌سازی عملکرد",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>بهینه‌سازی عملکرد</h2>
-      <p style="font-size:1.05rem;">
-        در پیاده‌سازی تعاملی رگرسیون کوانتایل (مثلاً در وب)، علاوه بر الگوریتم بهینه‌سازی، باید به کارایی اجرای کد در مرورگر هم فکر کنیم.[web:59]
-      </p>
-      <ul class="enhanced-list">
-        <li><strong>Lazy Loading:</strong> بارگذاری ماژول‌های سنگین مثل نمودارها فقط هنگام نیاز.</li>
-        <li><strong>Caching:</strong> ذخیره نتایج مدل برای τهای پرتکرار (مثلاً 0.1، 0.5، 0.9) و استفاده مجدد.</li>
-        <li><strong>Debouncing:</strong> وقتی کاربر اسلایدر τ را سریع حرکت می‌دهد، محاسبه فقط بعد از مکث کوتاه انجام شود.</li>
-        <li><strong>Memoization:</strong> اگر داده و τ عوض نشده‌اند، حل LP را تکرار نکن و از نتیجه قبلی استفاده کن.</li>
-      </ul>
-      <div class="warning-box">
-        <strong>مثال:</strong>
-        <p>
-          اگر کاربر اسلایدر را چندین بار در ثانیه جابه‌جا کند، Debounce و Memoization مانع اجرای ده‌ها حل LP غیرضروری می‌شوند و تجربه کاربری را بهتر می‌کنند.[web:59]
-        </p>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "چهار تکنیک: Lazy Loading، Caching، Debouncing، Memoization.",
-    timing: "3 دقیقه",
-    tips: "مثال بزن که اگر کاربر سریع τ را تکان می‌دهد، Debounce جلوی فشار محاسباتی را می‌گیرد."
-  }
-},
+            {
+                id: 22,
+                title: "کیفیت کد",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>کیفیت کد</h2>
+                    <p style="font-size:1.05rem;">
+                        برای پروژه‌ای که هم کد آماری دارد و هم UI، خوانایی، نگه‌داشت‌پذیری و قابلیت تست اهمیت زیادی دارند.[web:59]
+                    </p>
+                    <ul class="enhanced-list">
+                        <li><strong>Readability:</strong> نام‌گذاری قابل‌فهم توابع مانند <code>fitQuantile(τ)</code> یا <code>updatePlot()</code>.</li>
+                        <li><strong>Maintainability:</strong> جدا کردن کد مدل، داده و UI در ماژول‌های مستقل.</li>
+                        <li><strong>Testability:</strong> نوشتن تست‌های واحد برای توابع محاسبه‌ای مثل محاسبه Pinball Loss.</li>
+                    </ul>
+                    <p style="font-size:0.95rem;">
+                        ابزارهایی مثل ESLint و Prettier برای یکدست‌کردن Style و جلوگیری از خطاهای رایج در JavaScript استفاده شده‌اند.[web:59]
+                    </p>
+                    <div class="success-box">
+                        <strong>نکته عملی:</strong>
+                        <p>
+                        تست روی بخش‌های آماری (مانند محاسبه کوانتایل و ضرایب) حیاتی‌تر است، چون هر خطا مستقیماً به نتایج تحلیلی اشتباه منجر می‌شود.[web:19]
+                        </p>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "سه معیار کیفیت کد و دو ابزار ESLint و Prettier را نام ببر.",
+                    timing: "3 دقیقه",
+                    tips: "بگو تست روی بخش‌های آماری مهم‌تر است، چون خطا در آن‌ها به نتایج اشتباه منجر می‌شود."
+                }
+            },
 
-{
-  id: 22,
-  title: "کیفیت کد",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>کیفیت کد</h2>
-      <p style="font-size:1.05rem;">
-        برای پروژه‌ای که هم کد آماری دارد و هم UI، خوانایی، نگه‌داشت‌پذیری و قابلیت تست اهمیت زیادی دارند.[web:59]
-      </p>
-      <ul class="enhanced-list">
-        <li><strong>Readability:</strong> نام‌گذاری قابل‌فهم توابع مانند <code>fitQuantile(τ)</code> یا <code>updatePlot()</code>.</li>
-        <li><strong>Maintainability:</strong> جدا کردن کد مدل، داده و UI در ماژول‌های مستقل.</li>
-        <li><strong>Testability:</strong> نوشتن تست‌های واحد برای توابع محاسبه‌ای مثل محاسبه Pinball Loss.</li>
-      </ul>
-      <p style="font-size:0.95rem;">
-        ابزارهایی مثل ESLint و Prettier برای یکدست‌کردن Style و جلوگیری از خطاهای رایج در JavaScript استفاده شده‌اند.[web:59]
-      </p>
-      <div class="success-box">
-        <strong>نکته عملی:</strong>
-        <p>
-          تست روی بخش‌های آماری (مانند محاسبه کوانتایل و ضرایب) حیاتی‌تر است، چون هر خطا مستقیماً به نتایج تحلیلی اشتباه منجر می‌شود.[web:19]
-        </p>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "سه معیار کیفیت کد و دو ابزار ESLint و Prettier را نام ببر.",
-    timing: "3 دقیقه",
-    tips: "بگو تست روی بخش‌های آماری مهم‌تر است، چون خطا در آن‌ها به نتایج اشتباه منجر می‌شود."
-  }
-},
+            {
+                id: 23,
+                title: "تحلیل حساسیت",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>تحلیل حساسیت</h2>
+                    <p style="font-size:1.05rem;">
+                        تحلیل حساسیت بررسی می‌کند که نتایج رگرسیون کوانتایل چقدر نسبت به فرضیات، انتخاب τ و داده‌های ورودی حساس هستند.[web:35][web:44]
+                    </p>
+                    <ul class="enhanced-list">
+                        <li>روش One-at-a-Time: تغییر جداگانه هر متغیر یا پارامتر و مشاهده اثر روی ضرایب کوانتایل.</li>
+                        <li>Bootstrap: نمونه‌گیری مجدد از داده‌ها و بازبرآورد مدل برای به‌دست‌آوردن توزیع ضرایب.[web:35]</li>
+                    </ul>
+                    <p style="font-size:0.95rem;">
+                        از Bootstrap معمولاً برای ساختن فاصله‌های اطمینان برای ضرایب کوانتایل استفاده می‌شود.[web:35]
+                    </p>
+                    <div class="info-box">
+                        <strong>نکته:</strong>
+                        <p>
+                        منبع عدم‌اطمینان می‌تواند از داده (نمونه محدود)، فرم مدل یا انتخاب سطح τ باشد؛ تحلیل حساسیت کمک می‌کند سهم هر کدام را بهتر ببینیم.[web:35]
+                        </p>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "منابع عدم‌اطمینان (داده، مدل، انتخاب τ) را بگو.",
+                    timing: "3 دقیقه",
+                    tips: "اگر نمودار داری، یک نمودار از فواصل اطمینان کوانتایل‌ها نشان بده."
+                }
+            },
 
-{
-  id: 23,
-  title: "تحلیل حساسیت",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>تحلیل حساسیت</h2>
-      <p style="font-size:1.05rem;">
-        تحلیل حساسیت بررسی می‌کند که نتایج رگرسیون کوانتایل چقدر نسبت به فرضیات، انتخاب τ و داده‌های ورودی حساس هستند.[web:35][web:44]
-      </p>
-      <ul class="enhanced-list">
-        <li>روش One-at-a-Time: تغییر جداگانه هر متغیر یا پارامتر و مشاهده اثر روی ضرایب کوانتایل.</li>
-        <li>Bootstrap: نمونه‌گیری مجدد از داده‌ها و بازبرآورد مدل برای به‌دست‌آوردن توزیع ضرایب.[web:35]</li>
-      </ul>
-      <p style="font-size:0.95rem;">
-        از Bootstrap معمولاً برای ساختن فاصله‌های اطمینان برای ضرایب کوانتایل استفاده می‌شود.[web:35]
-      </p>
-      <div class="info-box">
-        <strong>نکته:</strong>
-        <p>
-          منبع عدم‌اطمینان می‌تواند از داده (نمونه محدود)، فرم مدل یا انتخاب سطح τ باشد؛ تحلیل حساسیت کمک می‌کند سهم هر کدام را بهتر ببینیم.[web:35]
-        </p>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "منابع عدم‌اطمینان (داده، مدل، انتخاب τ) را بگو.",
-    timing: "3 دقیقه",
-    tips: "اگر نمودار داری، یک نمودار از فواصل اطمینان کوانتایل‌ها نشان بده."
-  }
-},
+            {
+                id: 24,
+                title: "معیارهای ارزیابی",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>معیارهای ارزیابی مدل</h2>
+                    <p style="font-size:1.05rem;">
+                        برای ارزیابی کیفیت برازش و قدرت پیش‌بینی مدل رگرسیون کوانتایل، می‌توان از معیارهای خطا و پوشش استفاده کرد.[web:19][web:59]
+                    </p>
+                    <ul class="enhanced-list">
+                        <li><strong>MAE:</strong> میانگین قدرمطلق خطاها؛ معیار کلی خطای پیش‌بینی.</li>
+                        <li><strong>MSE:</strong> میانگین مربعات خطا؛ خطاهای بزرگ را بیشتر جریمه می‌کند.</li>
+                        <li><strong>Quantile Loss:</strong> میانگین ρ<sub>τ</sub>(Yᵢ - Ŷᵢ)؛ معیار طبیعی برای مدل کوانتایل.[web:19]</li>
+                        <li><strong>Coverage:</strong> درصد مشاهداتی که زیر برآورد Q<sub>τ</sub> قرار می‌گیرند (باید تقریباً برابر τ باشد).[web:19]</li>
+                    </ul>
+                    <div class="key-insight">
+                        <strong>توجه به Coverage:</strong>
+                        <p>
+                        اگر برای τ=0.9 فقط 70٪ نقاط زیر منحنی باشند، یعنی مدل به‌خوبی کوانتایل 0.9 را نگرفته و لازم است مدل یا متغیرها بازنگری شوند.[web:19]
+                        </p>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "فرمول MAE، MSE و Quantile Loss را روی تخته اگر لازم شد بنویس.",
+                    timing: "3 دقیقه",
+                    tips: "روی Coverage تاکید کن: اگر برای τ=0.9 فقط 70٪ نقاط زیر منحنی‌اند یعنی مدل خوب کوانتایل 0.9 را نگرفته."
+                }
+            },
 
-{
-  id: 24,
-  title: "معیارهای ارزیابی",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>معیارهای ارزیابی مدل</h2>
-      <p style="font-size:1.05rem;">
-        برای ارزیابی کیفیت برازش و قدرت پیش‌بینی مدل رگرسیون کوانتایل، می‌توان از معیارهای خطا و پوشش استفاده کرد.[web:19][web:59]
-      </p>
-      <ul class="enhanced-list">
-        <li><strong>MAE:</strong> میانگین قدرمطلق خطاها؛ معیار کلی خطای پیش‌بینی.</li>
-        <li><strong>MSE:</strong> میانگین مربعات خطا؛ خطاهای بزرگ را بیشتر جریمه می‌کند.</li>
-        <li><strong>Quantile Loss:</strong> میانگین ρ<sub>τ</sub>(Yᵢ - Ŷᵢ)؛ معیار طبیعی برای مدل کوانتایل.[web:19]</li>
-        <li><strong>Coverage:</strong> درصد مشاهداتی که زیر برآورد Q<sub>τ</sub> قرار می‌گیرند (باید تقریباً برابر τ باشد).[web:19]</li>
-      </ul>
-      <div class="key-insight">
-        <strong>توجه به Coverage:</strong>
-        <p>
-          اگر برای τ=0.9 فقط 70٪ نقاط زیر منحنی باشند، یعنی مدل به‌خوبی کوانتایل 0.9 را نگرفته و لازم است مدل یا متغیرها بازنگری شوند.[web:19]
-        </p>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "فرمول MAE، MSE و Quantile Loss را روی تخته اگر لازم شد بنویس.",
-    timing: "3 دقیقه",
-    tips: "روی Coverage تاکید کن: اگر برای τ=0.9 فقط 70٪ نقاط زیر منحنی‌اند یعنی مدل خوب کوانتایل 0.9 را نگرفته."
-  }
-},
+            {
+                id: 25,
+                title: "خصوصیات آماری",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>خصوصیات آماری برآوردگر</h2>
+                    <p style="font-size:1.05rem;">
+                        در شرایط منظم، برآوردگرهای رگرسیون کوانتایل هم سازگارند و هم نرمال مجانبی، مشابه OLS اما با ماتریس کوواریانس متفاوت.[web:35][web:19]
+                    </p>
+                    <ul class="enhanced-list">
+                        <li><strong>سازگاری:</strong> با بزرگ‌شدن n، β̂<sub>τ</sub> به β<sub>τ</sub> واقعی نزدیک می‌شود.[web:35]</li>
+                        <li><strong>نرمال‌بودن مجانبی:</strong> √n(β̂<sub>τ</sub> - β<sub>τ</sub>) → نرمال با کوواریانس وابسته به τ و چگالی شرطی در اطراف کوانتایل.[web:35]</li>
+                    </ul>
+                    <p style="font-size:0.95rem;">
+                        این نتایج اجازه می‌دهد فواصل اطمینان و آزمون فرض برای ضرایب کوانتایل تعریف کنیم، همان‌طور که در مقاله Koenker & Hallock (2001) توضیح داده شده است.[web:35]
+                    </p>
+                    </div>
+                `,
+                notes: {
+                    content: "به Koenker & Hallock (2001) اشاره کن که مرور خوبی از نظریه می‌دهند.",
+                    timing: "3 دقیقه",
+                    tips: "ریاضی را خیلی سنگین نکن؛ فقط ایده را بگو."
+                }
+            },
 
-{
-  id: 25,
-  title: "خصوصیات آماری",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>خصوصیات آماری برآوردگر</h2>
-      <p style="font-size:1.05rem;">
-        در شرایط منظم، برآوردگرهای رگرسیون کوانتایل هم سازگارند و هم نرمال مجانبی، مشابه OLS اما با ماتریس کوواریانس متفاوت.[web:35][web:19]
-      </p>
-      <ul class="enhanced-list">
-        <li><strong>سازگاری:</strong> با بزرگ‌شدن n، β̂<sub>τ</sub> به β<sub>τ</sub> واقعی نزدیک می‌شود.[web:35]</li>
-        <li><strong>نرمال‌بودن مجانبی:</strong> √n(β̂<sub>τ</sub> - β<sub>τ</sub>) → نرمال با کوواریانس وابسته به τ و چگالی شرطی در اطراف کوانتایل.[web:35]</li>
-      </ul>
-      <p style="font-size:0.95rem;">
-        این نتایج اجازه می‌دهد فواصل اطمینان و آزمون فرض برای ضرایب کوانتایل تعریف کنیم، همان‌طور که در مقاله Koenker & Hallock (2001) توضیح داده شده است.[web:35]
-      </p>
-    </div>
-  `,
-  notes: {
-    content: "به Koenker & Hallock (2001) اشاره کن که مرور خوبی از نظریه می‌دهند.",
-    timing: "3 دقیقه",
-    tips: "ریاضی را خیلی سنگین نکن؛ فقط ایده را بگو."
-  }
-},
+            {
+                id: 26,
+                title: "محدودیت‌ها و چالش‌ها",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>محدودیت‌ها و چالش‌ها</h2>
+                    <p style="font-size:1.05rem;">
+                        با وجود مزایا، رگرسیون کوانتایل چالش‌هایی هم دارد که در کاربردهای عملی باید به آن‌ها توجه شود.[web:35]
+                    </p>
+                    <ul class="enhanced-list">
+                        <li>پیچیدگی محاسباتی بالاتر نسبت به OLS، به‌ویژه در ابعاد بزرگ.</li>
+                        <li>انتخاب τ مناسب بر اساس سؤال تحقیق؛ هر τ معنای تفسیری خاص دارد.[web:35]</li>
+                        <li>مسئله تقاطع کوانتایل‌ها و نیاز به روش‌هایی مانند Rearrangement.[web:36]</li>
+                        <li>تفسیر هم‌زمان ضرایب در چندین τ ممکن است برای مخاطب غیرآماری دشوار باشد.[web:35]</li>
+                    </ul>
+                    <div class="warning-box">
+                        <strong>راه‌حل‌های عملی:</strong>
+                        <p>
+                        استفاده از Regularization و الگوریتم‌های کاراتر برای ابعاد بزرگ، انتخاب τ با مشورت متخصص حوزه، اعمال Rearrangement برای جلوگیری از تقاطع و تمرکز بر چند τ کلیدی به جای ده‌ها سطح مختلف.[web:36]
+                        </p>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "چهار چالش: محاسبات، انتخاب τ، عدم تقاطع، تفسیر.",
+                    timing: "3 دقیقه",
+                    tips: "برای هر چالش یک راه‌حل عملی کوتاه هم پیشنهاد بده."
+                }
+            },
 
-{
-  id: 26,
-  title: "محدودیت‌ها و چالش‌ها",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>محدودیت‌ها و چالش‌ها</h2>
-      <p style="font-size:1.05rem;">
-        با وجود مزایا، رگرسیون کوانتایل چالش‌هایی هم دارد که در کاربردهای عملی باید به آن‌ها توجه شود.[web:35]
-      </p>
-      <ul class="enhanced-list">
-        <li>پیچیدگی محاسباتی بالاتر نسبت به OLS، به‌ویژه در ابعاد بزرگ.</li>
-        <li>انتخاب τ مناسب بر اساس سؤال تحقیق؛ هر τ معنای تفسیری خاص دارد.[web:35]</li>
-        <li>مسئله تقاطع کوانتایل‌ها و نیاز به روش‌هایی مانند Rearrangement.[web:36]</li>
-        <li>تفسیر هم‌زمان ضرایب در چندین τ ممکن است برای مخاطب غیرآماری دشوار باشد.[web:35]</li>
-      </ul>
-      <div class="warning-box">
-        <strong>راه‌حل‌های عملی:</strong>
-        <p>
-          استفاده از Regularization و الگوریتم‌های کاراتر برای ابعاد بزرگ، انتخاب τ با مشورت متخصص حوزه، اعمال Rearrangement برای جلوگیری از تقاطع و تمرکز بر چند τ کلیدی به جای ده‌ها سطح مختلف.[web:36]
-        </p>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "چهار چالش: محاسبات، انتخاب τ، عدم تقاطع، تفسیر.",
-    timing: "3 دقیقه",
-    tips: "برای هر چالش یک راه‌حل عملی کوتاه هم پیشنهاد بده."
-  }
-},
+            {
+                id: 27,
+                title: "تحقیقات آینده",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>تحقیقات آینده</h2>
+                    <p style="font-size:1.05rem;">
+                        رگرسیون کوانتایل هنوز هم حوزه‌ای فعال در تحقیقات آماری و یادگیری ماشین است.[web:56]
+                    </p>
+                    <ul class="enhanced-list">
+                        <li>ترکیب رگرسیون کوانتایل با Deep Learning برای مسائل تصویری و سری زمانی پیچیده.[web:56]</li>
+                        <li>مدل‌های کوانتایل در ابعاد بالا (High-dimensional) با Regularizationهای پیشرفته.[web:56]</li>
+                        <li>رگرسیون کوانتایل برای داده‌های سری زمانی مالی و اقلیمی.[web:46]</li>
+                        <li>مدل‌های بیزی رگرسیون کوانتایل برای تحلیل ریسک و تشخیص ناهنجاری.[web:48]</li>
+                    </ul>
+                    <div class="info-box">
+                        <strong>ایده کلی:</strong>
+                        <p>
+                        تمرکز اصلی تحقیقات جدید روی ادغام QR با مدل‌های پیچیده (شبکه‌های عمیق، سری زمانی ساختاری و روش‌های بیزی) و مقیاس‌پذیری در داده‌های بزرگ است.[web:56]
+                        </p>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "۶ حوزه: Deep QR، High-D, Time Series, Bayesian QR و ...",
+                    timing: "3 دقیقه",
+                    tips: "فقط چند مورد را نام ببر؛ وارد جزئیات سنگین نشو."
+                }
+            },
 
-{
-  id: 27,
-  title: "تحقیقات آینده",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>تحقیقات آینده</h2>
-      <p style="font-size:1.05rem;">
-        رگرسیون کوانتایل هنوز هم حوزه‌ای فعال در تحقیقات آماری و یادگیری ماشین است.[web:56]
-      </p>
-      <ul class="enhanced-list">
-        <li>ترکیب رگرسیون کوانتایل با Deep Learning برای مسائل تصویری و سری زمانی پیچیده.[web:56]</li>
-        <li>مدل‌های کوانتایل در ابعاد بالا (High-dimensional) با Regularizationهای پیشرفته.[web:56]</li>
-        <li>رگرسیون کوانتایل برای داده‌های سری زمانی مالی و اقلیمی.[web:46]</li>
-        <li>مدل‌های بیزی رگرسیون کوانتایل برای تحلیل ریسک و تشخیص ناهنجاری.[web:48]</li>
-      </ul>
-      <div class="info-box">
-        <strong>ایده کلی:</strong>
-        <p>
-          تمرکز اصلی تحقیقات جدید روی ادغام QR با مدل‌های پیچیده (شبکه‌های عمیق، سری زمانی ساختاری و روش‌های بیزی) و مقیاس‌پذیری در داده‌های بزرگ است.[web:56]
-        </p>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "۶ حوزه: Deep QR، High-D, Time Series, Bayesian QR و ...",
-    timing: "3 دقیقه",
-    tips: "فقط چند مورد را نام ببر؛ وارد جزئیات سنگین نشو."
-  }
-},
+            {
+                id: 28,
+                title: "چالش‌های پیاده‌سازی",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>چالش‌های پیاده‌سازی</h2>
+                    <p style="font-size:1.05rem;">
+                        پیاده‌سازی عددی رگرسیون کوانتایل، مخصوصاً برای τهای بسیار کوچک یا بزرگ، می‌تواند از نظر پایداری عددی و همگرایی حساس باشد.[web:59][web:53]
+                    </p>
+                    <ul class="enhanced-list">
+                        <li><strong>Numerical Stability:</strong> مقادیر خیلی بزرگ یا خیلی کوچک در ماتریس طراحی می‌توانند باعث ناپایداری شوند.</li>
+                        <li><strong>Convergence:</strong> انتخاب الگوریتم (Interior Point، IRLS و ...) روی سرعت و همگرایی اثر دارد.[web:53][web:59]</li>
+                        <li><strong>Memory:</strong> برای n بزرگ، ذخیره‌سازی ماتریس‌ها و حل LP سنگین است.</li>
+                        <li><strong>Implementation differences:</strong> پیاده‌سازی R (quantreg) و Python (statsmodels) نتایج اندکی متفاوت می‌دهند چون الگوریتم‌ها فرق می‌کنند.[web:50][web:53]</li>
+                    </ul>
+                    <div class="key-insight">
+                        <strong>مثال:</strong>
+                        <p>
+                        در R، بسته <code>quantreg</code> از الگوریتم‌های Simplex و Interior Point استفاده می‌کند، در حالی‌که در Python، <code>QuantReg</code> در statsmodels بر پایه IRLS پیاده‌سازی شده است و این می‌تواند تفاوت‌های عددی کوچکی ایجاد کند.[web:50][web:59][web:61]
+                        </p>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "چهار چالش: پایداری عددی، همگرایی، حافظه، تفاوت پیاده‌سازی‌ها.",
+                    timing: "3 دقیقه",
+                    tips: "مثال: R از Interior Point استفاده می‌کند، Python از IRLS."
+                }
+            },
 
-{
-  id: 28,
-  title: "چالش‌های پیاده‌سازی",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>چالش‌های پیاده‌سازی</h2>
-      <p style="font-size:1.05rem;">
-        پیاده‌سازی عددی رگرسیون کوانتایل، مخصوصاً برای τهای بسیار کوچک یا بزرگ، می‌تواند از نظر پایداری عددی و همگرایی حساس باشد.[web:59][web:53]
-      </p>
-      <ul class="enhanced-list">
-        <li><strong>Numerical Stability:</strong> مقادیر خیلی بزرگ یا خیلی کوچک در ماتریس طراحی می‌توانند باعث ناپایداری شوند.</li>
-        <li><strong>Convergence:</strong> انتخاب الگوریتم (Interior Point، IRLS و ...) روی سرعت و همگرایی اثر دارد.[web:53][web:59]</li>
-        <li><strong>Memory:</strong> برای n بزرگ، ذخیره‌سازی ماتریس‌ها و حل LP سنگین است.</li>
-        <li><strong>Implementation differences:</strong> پیاده‌سازی R (quantreg) و Python (statsmodels) نتایج اندکی متفاوت می‌دهند چون الگوریتم‌ها فرق می‌کنند.[web:50][web:53]</li>
-      </ul>
-      <div class="key-insight">
-        <strong>مثال:</strong>
-        <p>
-          در R، بسته <code>quantreg</code> از الگوریتم‌های Simplex و Interior Point استفاده می‌کند، در حالی‌که در Python، <code>QuantReg</code> در statsmodels بر پایه IRLS پیاده‌سازی شده است و این می‌تواند تفاوت‌های عددی کوچکی ایجاد کند.[web:50][web:59][web:61]
-        </p>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "چهار چالش: پایداری عددی، همگرایی، حافظه، تفاوت پیاده‌سازی‌ها.",
-    timing: "3 دقیقه",
-    tips: "مثال: R از Interior Point استفاده می‌کند، Python از IRLS."
-  }
-},
+            {
+                id: 29,
+                title: "بسته‌های نرم‌افزاری",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>بسته‌های نرم‌افزاری</h2>
+                    <p style="font-size:1.05rem;">
+                        برای رگرسیون کوانتایل، کتابخانه‌های استاندارد و قدرتمندی در زبان‌های مختلف وجود دارد که پیاده‌سازی را ساده می‌کنند.[web:50][web:59]
+                    </p>
+                    <div class="data-table-wrapper">
+                        <table class="data-table">
+                        <thead>
+                            <tr>
+                            <th>زبان</th>
+                            <th>بسته</th>
+                            <th>توضیح کوتاه</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>R</td>
+                            <td><code>quantreg</code></td>
+                            <td>پیاده‌سازی کلاسیک Koenker؛ شامل روش‌های Simplex و Interior Point برای رگرسیون کوانتایل.[web:50][web:72]</td>
+                            </tr>
+                            <tr>
+                            <td>Python</td>
+                            <td><code>statsmodels.QuantReg</code></td>
+                            <td>پیاده‌سازی رگرسیون کوانتایل با IRLS و توابع کمکی برای تحلیل و خلاصه نتایج.[web:59][web:61]</td>
+                            </tr>
+                            <tr>
+                            <td>Julia</td>
+                            <td>بسته‌های کوانتایل در اکوسیستم آماری</td>
+                            <td>مناسب برای کاربردهای با کارایی بالا و محاسبات عددی سنگین.[web:60]</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    <div class="code-snippet">
+                        <span class="comment">// مثال کوتاه در Python با statsmodels</span><br>
+                        <span class="keyword">import</span> statsmodels.api <span class="keyword">as</span> sm<br>
+                        <span class="keyword">import</span> statsmodels.formula.api <span class="keyword">as</span> smf<br><br>
+                        mod = smf.quantreg('y ~ x1 + x2', data)<br>
+                        res = mod.fit(q=0.5)<br>
+                        print(res.summary())<br>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "R (quantreg)، Python (statsmodels)، اشاره کوتاه به Julia.",
+                    timing: "3 دقیقه",
+                    tips: "اگر زمان اجازه داد، یک قطعه کد کوتاه از R یا Python نشان بده."
+                }
+            },
 
-{
-  id: 29,
-  title: "بسته‌های نرم‌افزاری",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>بسته‌های نرم‌افزاری</h2>
-      <p style="font-size:1.05rem;">
-        برای رگرسیون کوانتایل، کتابخانه‌های استاندارد و قدرتمندی در زبان‌های مختلف وجود دارد که پیاده‌سازی را ساده می‌کنند.[web:50][web:59]
-      </p>
-      <div class="data-table-wrapper">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>زبان</th>
-              <th>بسته</th>
-              <th>توضیح کوتاه</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>R</td>
-              <td><code>quantreg</code></td>
-              <td>پیاده‌سازی کلاسیک Koenker؛ شامل روش‌های Simplex و Interior Point برای رگرسیون کوانتایل.[web:50][web:72]</td>
-            </tr>
-            <tr>
-              <td>Python</td>
-              <td><code>statsmodels.QuantReg</code></td>
-              <td>پیاده‌سازی رگرسیون کوانتایل با IRLS و توابع کمکی برای تحلیل و خلاصه نتایج.[web:59][web:61]</td>
-            </tr>
-            <tr>
-              <td>Julia</td>
-              <td>بسته‌های کوانتایل در اکوسیستم آماری</td>
-              <td>مناسب برای کاربردهای با کارایی بالا و محاسبات عددی سنگین.[web:60]</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="code-snippet">
-        <span class="comment">// مثال کوتاه در Python با statsmodels</span><br>
-        <span class="keyword">import</span> statsmodels.api <span class="keyword">as</span> sm<br>
-        <span class="keyword">import</span> statsmodels.formula.api <span class="keyword">as</span> smf<br><br>
-        mod = smf.quantreg('y ~ x1 + x2', data)<br>
-        res = mod.fit(q=0.5)<br>
-        print(res.summary())<br>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "R (quantreg)، Python (statsmodels)، اشاره کوتاه به Julia.",
-    timing: "3 دقیقه",
-    tips: "اگر زمان اجازه داد، یک قطعه کد کوتاه از R یا Python نشان بده."
-  }
-},
+            {
+                id: 30,
+                title: "مطالعه موردی واقعی",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>مطالعه موردی: بیمه خودرو</h2>
+                    <p style="font-size:1.05rem;">
+                        در بیمه، هدف مهم، برآورد توزیع مشروط خسارت‌ها برای رانندگان مختلف و تعیین حق‌بیمه منصفانه است.[web:45][web:48][web:54]
+                    </p>
+                    <p style="font-size:0.95rem;">
+                        با رگرسیون کوانتایل می‌توان کوانتایل‌های بالا (مثلاً 0.9 یا 0.95) را مدل کرد تا حق‌بیمه بر اساس سناریوهای پرریسک تعیین شود، نه فقط میانگین خسارت.[web:45][web:48][web:65]
+                    </p>
+                    <div class="numeric-example">
+                        <span class="label">مثال ساده:</span>
+                        راننده A: میانه خسارت سالانه = 2 میلیون تومان، کوانتایل 0.9 = 6 میلیون.<br>
+                        راننده B: میانه خسارت = 2 میلیون، کوانتایل 0.9 = 10 میلیون.<br><br>
+                        <span class="label">نتیجه:</span>
+                        با تکیه بر میانگین یا میانه، هر دو راننده مشابه دیده می‌شوند؛<br>
+                        اما با استفاده از کوانتایل 0.9، راننده B حق‌بیمه بالاتری می‌گیرد چون ریسک دنباله سنگین‌تری دارد.[web:45][web:65]
+                    </div>
+                    <p style="font-size:0.95rem;">
+                        این رویکرد به شرکت بیمه کمک می‌کند تا ریسک رانندگان پرریسک را بهتر شناسایی کرده و از انتخاب معکوس جلوگیری کند.[web:45][web:67]
+                    </p>
+                    </div>
+                `,
+                notes: {
+                    content: "بر روی ایده حق‌بیمه بر اساس کوانتایل‌های بالای خسارت تمرکز کن.",
+                    timing: "3 دقیقه",
+                    tips: "یک مثال عددی ساده: تفاوت حق‌بیمه برای τ=0.5 و τ=0.9."
+                }
+            },
 
-{
-  id: 30,
-  title: "مطالعه موردی واقعی",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>مطالعه موردی: بیمه خودرو</h2>
-      <p style="font-size:1.05rem;">
-        در بیمه، هدف مهم، برآورد توزیع مشروط خسارت‌ها برای رانندگان مختلف و تعیین حق‌بیمه منصفانه است.[web:45][web:48][web:54]
-      </p>
-      <p style="font-size:0.95rem;">
-        با رگرسیون کوانتایل می‌توان کوانتایل‌های بالا (مثلاً 0.9 یا 0.95) را مدل کرد تا حق‌بیمه بر اساس سناریوهای پرریسک تعیین شود، نه فقط میانگین خسارت.[web:45][web:48][web:65]
-      </p>
-      <div class="numeric-example">
-        <span class="label">مثال ساده:</span>
-        راننده A: میانه خسارت سالانه = 2 میلیون تومان، کوانتایل 0.9 = 6 میلیون.<br>
-        راننده B: میانه خسارت = 2 میلیون، کوانتایل 0.9 = 10 میلیون.<br><br>
-        <span class="label">نتیجه:</span>
-        با تکیه بر میانگین یا میانه، هر دو راننده مشابه دیده می‌شوند؛<br>
-        اما با استفاده از کوانتایل 0.9، راننده B حق‌بیمه بالاتری می‌گیرد چون ریسک دنباله سنگین‌تری دارد.[web:45][web:65]
-      </div>
-      <p style="font-size:0.95rem;">
-        این رویکرد به شرکت بیمه کمک می‌کند تا ریسک رانندگان پرریسک را بهتر شناسایی کرده و از انتخاب معکوس جلوگیری کند.[web:45][web:67]
-      </p>
-    </div>
-  `,
-  notes: {
-    content: "بر روی ایده حق‌بیمه بر اساس کوانتایل‌های بالای خسارت تمرکز کن.",
-    timing: "3 دقیقه",
-    tips: "یک مثال عددی ساده: تفاوت حق‌بیمه برای τ=0.5 و τ=0.9."
-  }
-},
+            {
+                id: 31,
+                title: "نکات کلیدی",
+                type: "content",
+                timing: 3,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>نکات کلیدی</h2>
+                    <ul class="enhanced-list">
+                        <li>رگرسیون کوانتایل تعمیم OLS از میانگین شرطی به کوانتایل‌های شرطی است.[web:35]</li>
+                        <li>تابع زیان Pinball Loss امکان مدل‌سازی نامتقارن دنباله‌های توزیع را می‌دهد.[web:19]</li>
+                        <li>QR نسبت به Outlierها مقاوم‌تر و برای توزیع‌های کج مناسب‌تر است.[web:35][web:51]</li>
+                        <li>فرم LP اجازه استفاده از الگوریتم‌های بهینه‌سازی مستحکم مثل Simplex و Interior Point را می‌دهد.[web:72][web:25]</li>
+                        <li>در مسائل واقعی (اقتصاد، سلامت، بیمه) هدف اغلب تحلیل کل توزیع است، نه فقط میانگین.[web:35][web:44][web:45]</li>
+                        <li>چالش‌هایی مثل تقاطع کوانتایل‌ها و انتخاب τ وجود دارد، اما راه‌حل‌های خوبی توسعه داده شده‌اند.[web:36]</li>
+                        <li>کتاب Koenker (2005) و مقاله Koenker & Hallock (2001) منابع اصلی برای مطالعه عمیق‌تر هستند.[web:24][web:35]</li>
+                    </ul>
+                    </div>
+                `,
+                notes: {
+                    content: "۷ نکته‌ی خلاصه؛ آن‌ها را به صورت تیترگونه بخوان.",
+                    timing: "3 دقیقه",
+                    tips: "در این اسلاید بیشتر جمع‌بندی کن تا وارد جزئیات نشوی."
+                }
+            },
 
-{
-  id: 31,
-  title: "نکات کلیدی",
-  type: "content",
-  timing: 3,
-  content: `
-    <div class="enhanced-slide">
-      <h2>نکات کلیدی</h2>
-      <ul class="enhanced-list">
-        <li>رگرسیون کوانتایل تعمیم OLS از میانگین شرطی به کوانتایل‌های شرطی است.[web:35]</li>
-        <li>تابع زیان Pinball Loss امکان مدل‌سازی نامتقارن دنباله‌های توزیع را می‌دهد.[web:19]</li>
-        <li>QR نسبت به Outlierها مقاوم‌تر و برای توزیع‌های کج مناسب‌تر است.[web:35][web:51]</li>
-        <li>فرم LP اجازه استفاده از الگوریتم‌های بهینه‌سازی مستحکم مثل Simplex و Interior Point را می‌دهد.[web:72][web:25]</li>
-        <li>در مسائل واقعی (اقتصاد، سلامت، بیمه) هدف اغلب تحلیل کل توزیع است، نه فقط میانگین.[web:35][web:44][web:45]</li>
-        <li>چالش‌هایی مثل تقاطع کوانتایل‌ها و انتخاب τ وجود دارد، اما راه‌حل‌های خوبی توسعه داده شده‌اند.[web:36]</li>
-        <li>کتاب Koenker (2005) و مقاله Koenker & Hallock (2001) منابع اصلی برای مطالعه عمیق‌تر هستند.[web:24][web:35]</li>
-      </ul>
-    </div>
-  `,
-  notes: {
-    content: "۷ نکته‌ی خلاصه؛ آن‌ها را به صورت تیترگونه بخوان.",
-    timing: "3 دقیقه",
-    tips: "در این اسلاید بیشتر جمع‌بندی کن تا وارد جزئیات نشوی."
-  }
-},
+            {
+                id: 32,
+                title: "خلاصه",
+                type: "content",
+                timing: 2,
+                content: `
+                    <div class="enhanced-slide">
+                    <h2>خلاصه</h2>
+                    <p style="font-size:1.05rem;">
+                        در این ارائه، از مفهوم کوانتایل و فرم LP رگرسیون کوانتایل شروع کردیم، روش‌های بهینه‌سازی، پیاده‌سازی و مسائل عددی را دیدیم و با کاربردهای واقعی در اقتصاد، سلامت و بیمه آشنا شدیم.[web:19][web:24][web:35]
+                    </p>
+                    <p style="font-size:1.0rem;">
+                        پیام اصلی این است که رگرسیون کوانتایل ابزار قدرتمندی برای دیدن تصویر کامل توزیع پاسخ است، نه فقط «میانگین»، و در بسیاری از مسائل واقعی این دید عمیق می‌تواند تصمیم‌گیری را به‌طور معناداری بهبود دهد.[web:35][web:44][web:45]
+                    </p>
+                    <div class="highlight-quote">
+                        «اگر OLS فقط یک عکس از داده‌ها می‌گیرد، رگرسیون کوانتایل یک فیلم کامل از رفتار توزیع به شما نشان می‌دهد.»[web:35]
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "به اهمیت فهم مفهوم کوانتایل و کاربرد آن در تصمیم‌گیری تأکید کن.",
+                    timing: "2 دقیقه",
+                    tips: "با یک جمله‌ی ساده و قابل‌به‌خاطر‌سپاری جمع‌بندی کن."
+                }
+            },
 
-{
-  id: 32,
-  title: "خلاصه",
-  type: "content",
-  timing: 2,
-  content: `
-    <div class="enhanced-slide">
-      <h2>خلاصه</h2>
-      <p style="font-size:1.05rem;">
-        در این ارائه، از مفهوم کوانتایل و فرم LP رگرسیون کوانتایل شروع کردیم، روش‌های بهینه‌سازی، پیاده‌سازی و مسائل عددی را دیدیم و با کاربردهای واقعی در اقتصاد، سلامت و بیمه آشنا شدیم.[web:19][web:24][web:35]
-      </p>
-      <p style="font-size:1.0rem;">
-        پیام اصلی این است که رگرسیون کوانتایل ابزار قدرتمندی برای دیدن تصویر کامل توزیع پاسخ است، نه فقط «میانگین»، و در بسیاری از مسائل واقعی این دید عمیق می‌تواند تصمیم‌گیری را به‌طور معناداری بهبود دهد.[web:35][web:44][web:45]
-      </p>
-      <div class="highlight-quote">
-        «اگر OLS فقط یک عکس از داده‌ها می‌گیرد، رگرسیون کوانتایل یک فیلم کامل از رفتار توزیع به شما نشان می‌دهد.»[web:35]
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "به اهمیت فهم مفهوم کوانتایل و کاربرد آن در تصمیم‌گیری تأکید کن.",
-    timing: "2 دقیقه",
-    tips: "با یک جمله‌ی ساده و قابل‌به‌خاطر‌سپاری جمع‌بندی کن."
-  }
-},
-
-{
-  id: 33,
-  title: "تشکر",
-  type: "closing",
-  timing: 1,
-  content: `
-    <div class="slide-title" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 16px;">
-      <div style="text-align: center;">
-        <h1 style="font-size: 3.5rem; margin-bottom: 2rem;">
-          <i class="fas fa-hand-holding-heart" style="color: #ec4899; margin-right: 1rem;"></i>
-          متشکرم
-        </h1>
-        <h2 style="color: var(--light); font-size: 1.8rem; margin-bottom: 3rem;">
-          از توجه و تأمل شما
-        </h2>
-        <div class="presenter-info" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;">
-          <div class="info-card" style="background:#111827;border-radius:12px;padding:1rem 1.5rem;min-width:220px;">
-            <div class="label" style="font-size:0.85rem;opacity:0.7;">سازنده ارائه</div>
-            <div class="value" style="font-size:1.1rem;margin-top:0.3rem;">امیرعلی سطوتی</div>
-          </div>
-          <div class="info-card" style="background:#111827;border-radius:12px;padding:1rem 1.5rem;min-width:220px;">
-            <div class="label" style="font-size:0.85rem;opacity:0.7;">ارائه‌دهنده</div>
-            <div class="value" style="font-size:1.1rem;margin-top:0.3rem;">نیلوفر سادات شکوهی</div>
-          </div>
-          <div class="info-card" style="background:#111827;border-radius:12px;padding:1rem 1.5rem;min-width:220px;">
-            <div class="label" style="font-size:0.85rem;opacity:0.7;">استاد درس</div>
-            <div class="value" style="font-size:1.1rem;margin-top:0.3rem;">مهدی عمادی</div>
-          </div>
-        </div>
-        <div style="margin-top: 3rem;">
-          <p style="font-size: 1.1rem; opacity: 0.8;">
-            دانشگاه فردوسی مشهد • دانشکده علوم
-          </p>
-          <p style="font-size: 1rem; opacity: 0.7; margin-top: 1rem;">
-            <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
-            <a href="mailto:quantile-regression@fum.edu.ir" style="color:#93c5fd;text-decoration:none;">
-              quantile-regression@fum.edu.ir
-            </a>
-          </p>
-        </div>
-        <div style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.6;">
-          <p>اگر پرسشی دارید، خوشحال می‌شوم بحث کنیم.</p>
-          <p style="margin-top: 0.5rem;">
-            <i class="fas fa-question-circle"></i>
-            سؤالی هست؟
-          </p>
-        </div>
-      </div>
-    </div>
-  `,
-  notes: {
-    content: "تشکر از مخاطبین و دعوت به پرسش.",
-    timing: "1 دقیقه",
-    tips: "چند ثانیه مکث کن تا اگر کسی سؤال دارد، فرصت پیدا کند."
-  }
-}
-
+            {
+                id: 33,
+                title: "تشکر",
+                type: "closing",
+                timing: 1,
+                content: `
+                    <div class="slide-title" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 16px;">
+                    <div style="text-align: center;">
+                        <h1 style="font-size: 3.5rem; margin-bottom: 2rem;">
+                        <i class="fas fa-hand-holding-heart" style="color: #ec4899; margin-right: 1rem;"></i>
+                        متشکرم
+                        </h1>
+                        <h2 style="color: var(--light); font-size: 1.8rem; margin-bottom: 3rem;">
+                        از توجه و تأمل شما
+                        </h2>
+                        <div class="presenter-info" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;">
+                        <div class="info-card" style="background:#111827;border-radius:12px;padding:1rem 1.5rem;min-width:220px;">
+                            <div class="label" style="font-size:0.85rem;opacity:0.7;">سازنده ارائه</div>
+                            <div class="value" style="font-size:1.1rem;margin-top:0.3rem;">امیرعلی سطوتی</div>
+                        </div>
+                        <div class="info-card" style="background:#111827;border-radius:12px;padding:1rem 1.5rem;min-width:220px;">
+                            <div class="label" style="font-size:0.85rem;opacity:0.7;">ارائه‌دهنده</div>
+                            <div class="value" style="font-size:1.1rem;margin-top:0.3rem;">نیلوفر سادات شکوهی</div>
+                        </div>
+                        <div class="info-card" style="background:#111827;border-radius:12px;padding:1rem 1.5rem;min-width:220px;">
+                            <div class="label" style="font-size:0.85rem;opacity:0.7;">استاد درس</div>
+                            <div class="value" style="font-size:1.1rem;margin-top:0.3rem;">مهدی عمادی</div>
+                        </div>
+                        </div>
+                        <div style="margin-top: 3rem;">
+                        <p style="font-size: 1.1rem; opacity: 0.8;">
+                            دانشگاه فردوسی مشهد • دانشکده علوم ریاضی
+                        </p>
+                        <p style="font-size: 1rem; opacity: 0.7; margin-top: 1rem;">
+                            <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                            <a href="mailto:amirali.satvati@gmail.com" style="color:#93c5fd;text-decoration:none;">
+                            amirali.satvati@gmail.com
+                            </a>
+                        </p>
+                        </div>
+                        <div style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.6;">
+                        <p>اگر پرسشی دارید، خوشحال می‌شوم بحث کنیم.</p>
+                        <p style="margin-top: 0.5rem;">
+                            <i class="fas fa-question-circle"></i>
+                            سؤالی هست؟
+                        </p>
+                        </div>
+                    </div>
+                    </div>
+                `,
+                notes: {
+                    content: "تشکر از مخاطبین و دعوت به پرسش.",
+                    timing: "1 دقیقه",
+                    tips: "چند ثانیه مکث کن تا اگر کسی سؤال دارد، فرصت پیدا کند."
+                }
+            },
+            {
+                id: 34,
+                title: "نظرسنجی",
+                type: "poll",
+                timing: 2,
+                content: `
+                    <div class="slide-content">
+                        <h2>📊 نظرسنجی</h2>
+                        <p style="font-size: 1.1rem; margin-bottom: 2rem;">نظر شما درباره این ارائه چیست؟</p>
+                        <div class="poll-container">
+                            <div class="poll-option" onclick="selectPoll(this)">
+                                <span class="poll-icon">😍</span>
+                                <span>عالی بود، خیلی یاد گرفتم!</span>
+                            </div>
+                            <div class="poll-option" onclick="selectPoll(this)">
+                                <span class="poll-icon">🤔</span>
+                                <span>خوب بود، اما جای کار دارد.</span>
+                            </div>
+                            <div class="poll-option" onclick="selectPoll(this)">
+                                <span class="poll-icon">😴</span>
+                                <span>خسته کننده بود.</span>
+                            </div>
+                        </div>
+                        <div id="poll-result" style="margin-top: 2rem; display: none; color: #10b981; font-weight: bold; text-align: center; font-size: 1.2rem; animation: slideIn 0.5s;">
+                            نظر شما ثبت شد! ممنون از بازخوردتون. ❤️
+                        </div>
+                    </div>
+                `,
+                notes: {
+                    content: "از مخاطبین بخواهید نظرشان را بدهند.",
+                    timing: "2 دقیقه",
+                    tips: "بازخورد مخاطبین بسیار ارزشمند است."
+                }
+            }
+        ]; // End of slidesData
 
         // ==================== APP STATE ====================
         let currentSlideIndex = 0;
@@ -2431,6 +2624,10 @@ function switchHistoryTab(tab) {
         let timerInterval = null;
         let drawingContext = null;
         let isDrawing = false;
+        
+        // Touch variables
+        let touchStartX = 0;
+        let touchEndX = 0;
 
         // ==================== INITIALIZATION ====================
         function init() {
@@ -2495,21 +2692,128 @@ function switchHistoryTab(tab) {
                 document.getElementById('notesTips').innerHTML = `<i class="fas fa-lightbulb"></i> ${notes.tips}`;
             }
             
-            resetDrawing();
+            // Note: drawing is NOT reset here to keep drawings across slides if desired, 
+            // or uncomment resetDrawing() to clear per slide.
+            // resetDrawing(); 
+
+            // Re-render KaTeX if available
+            if (typeof renderMathInElement !== 'undefined') {
+                 renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ]
+                 });
+            }
         }
 
-        // ==================== KEYBOARD SHORTCUTS ====================
+        // ==================== HISTORY TAB LOGIC (MOVED HERE) ====================
+        function switchHistoryTab(tab) {
+            const historyContent = document.getElementById('historyContent');
+            const peopleContent = document.getElementById('peopleContent');
+            const historyBtn = document.getElementById('historyTabBtn');
+            const peopleBtn = document.getElementById('peopleTabBtn');
+            
+            if (tab === 'history') {
+                historyContent.style.display = 'block';
+                peopleContent.style.display = 'none';
+                
+                historyBtn.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+                historyBtn.style.color = 'white';
+                peopleBtn.style.background = 'rgba(255,255,255,0.05)';
+                peopleBtn.style.color = 'var(--text-light)';
+            } else {
+                historyContent.style.display = 'none';
+                peopleContent.style.display = 'block';
+                
+                historyBtn.style.background = 'rgba(255,255,255,0.05)';
+                historyBtn.style.color = 'var(--text-light)';
+                peopleBtn.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+                peopleBtn.style.color = 'white';
+            }
+        }
+
+        // ==================== POLL LOGIC ====================
+        function selectPoll(optionElement) {
+            // Remove selected class from all options
+            const options = document.querySelectorAll('.poll-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Show result message
+            const resultMsg = document.getElementById('poll-result');
+            resultMsg.style.display = 'block';
+        }
+
+        // ==================== OVERVIEW MODAL LOGIC ====================
+        function toggleOverview() {
+            const modal = document.getElementById('overviewModal');
+            modal.classList.toggle('active');
+            if (modal.classList.contains('active')) {
+                renderOverview();
+            }
+        }
+
+        function renderOverview() {
+            const grid = document.getElementById('overviewGrid');
+            grid.innerHTML = '';
+            slidesData.forEach((slide, index) => {
+                const item = document.createElement('div');
+                item.className = `overview-item ${index === currentSlideIndex ? 'active' : ''}`;
+                item.innerHTML = `<strong>${index + 1}.</strong> ${slide.title}`;
+                item.onclick = () => {
+                    currentSlideIndex = index;
+                    updateSlide();
+                    toggleOverview();
+                };
+                grid.appendChild(item);
+            });
+        }
+
+        // ==================== KEYBOARD & TOUCH SHORTCUTS ====================
         function setupEventListeners() {
+            // Keyboard
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
                 if (e.key === 'ArrowLeft') previousSlide();
                 if (e.key === 'f' || e.key === 'F') toggleFullscreen();
-                if (e.key === 't' || e.key === 'T') toggleTheme();
+                // Theme toggle removed
                 if (e.key === 'l' || e.key === 'L') toggleLaser();
                 if (e.key === 'p' || e.key === 'P') togglePen();
+                if (e.key === 'e' || e.key === 'E') toggleEraser(); // Added E shortcut
                 if (e.key === 'n' || e.key === 'N') toggleSpeakerNotes();
                 if (e.key === 'r' || e.key === 'R') openReferences();
+                if (e.key === 'o' || e.key === 'O') toggleOverview();
             });
+
+            // Touch Swipe
+            document.addEventListener('touchstart', handleTouchStart, false);
+            document.addEventListener('touchend', handleTouchEnd, false);
+
+            // Progress Bar Click
+            document.querySelector('.progress-bar').addEventListener('click', (e) => {
+                const width = e.target.closest('.progress-bar').clientWidth;
+                const clickX = e.offsetX;
+                const percent = clickX / width;
+                currentSlideIndex = Math.floor(percent * slidesData.length);
+                updateSlide();
+            });
+        }
+
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) previousSlide();
         }
 
         // ==================== SPEAKER NOTES ====================
@@ -2576,7 +2880,7 @@ function switchHistoryTab(tab) {
             laser.style.top = (e.clientY - 7.5) + 'px';
         }
 
-        // ==================== DRAWING/PEN ====================
+        // ==================== DRAWING/PEN/ERASER ====================
         function initDrawing() {
             const canvas = document.getElementById('drawingCanvas');
             canvas.width = window.innerWidth;
@@ -2585,24 +2889,82 @@ function switchHistoryTab(tab) {
         }
 
         function togglePen() {
-            isPenActive = !isPenActive;
-            const canvas = document.getElementById('drawingCanvas');
-            const btn = document.getElementById('penBtn');
-            
-            if (isPenActive) {
+            // If pen wasn't active, activate it and reset composite mode
+            if (!isPenActive) {
+                isPenActive = true;
+                const canvas = document.getElementById('drawingCanvas');
+                const btn = document.getElementById('penBtn');
+                
                 canvas.style.display = 'block';
                 btn.classList.add('active');
+                
+                // Ensure composite operation is source-over (drawing)
+                if (drawingContext) {
+                    drawingContext.globalCompositeOperation = 'source-over';
+                }
+                
+                // If eraser was active, deactivate its button but keep drawing active (switch tool)
+                const eraserBtn = document.getElementById('eraserBtn');
+                eraserBtn.classList.remove('active');
+                
                 canvas.addEventListener('mousedown', startDrawing);
                 canvas.addEventListener('mousemove', draw);
                 canvas.addEventListener('mouseup', stopDrawing);
                 canvas.addEventListener('mouseout', stopDrawing);
             } else {
+                // If pen was active and composite is source-over, turn off drawing completely
+                // If pen was active but composite was destination-out (eraser mode), switch to pen
+                if (drawingContext && drawingContext.globalCompositeOperation === 'destination-out') {
+                     drawingContext.globalCompositeOperation = 'source-over';
+                     document.getElementById('eraserBtn').classList.remove('active');
+                     document.getElementById('penBtn').classList.add('active');
+                } else {
+                    // Turn off
+                    isPenActive = false;
+                    const canvas = document.getElementById('drawingCanvas');
+                    const btn = document.getElementById('penBtn');
+                    canvas.style.display = 'none';
+                    btn.classList.remove('active');
+                    
+                    canvas.removeEventListener('mousedown', startDrawing);
+                    canvas.removeEventListener('mousemove', draw);
+                    canvas.removeEventListener('mouseup', stopDrawing);
+                    canvas.removeEventListener('mouseout', stopDrawing);
+                }
+            }
+        }
+
+        function toggleEraser() {
+            // Activate drawing surface if not active
+            const canvas = document.getElementById('drawingCanvas');
+            
+            // Check if we are currently in eraser mode
+            const isEraserMode = drawingContext && drawingContext.globalCompositeOperation === 'destination-out';
+            
+            if (isEraserMode && isPenActive) {
+                // Already eraser, turn off drawing (or switch back to pen? let's turn off)
+                isPenActive = false;
                 canvas.style.display = 'none';
-                btn.classList.remove('active');
+                document.getElementById('eraserBtn').classList.remove('active');
                 canvas.removeEventListener('mousedown', startDrawing);
                 canvas.removeEventListener('mousemove', draw);
                 canvas.removeEventListener('mouseup', stopDrawing);
                 canvas.removeEventListener('mouseout', stopDrawing);
+            } else {
+                // Activate eraser
+                isPenActive = true;
+                canvas.style.display = 'block';
+                document.getElementById('penBtn').classList.remove('active');
+                document.getElementById('eraserBtn').classList.add('active');
+                
+                if (drawingContext) {
+                    drawingContext.globalCompositeOperation = 'destination-out';
+                }
+                
+                canvas.addEventListener('mousedown', startDrawing);
+                canvas.addEventListener('mousemove', draw);
+                canvas.addEventListener('mouseup', stopDrawing);
+                canvas.addEventListener('mouseout', stopDrawing);
             }
         }
 
@@ -2614,8 +2976,15 @@ function switchHistoryTab(tab) {
 
         function draw(e) {
             if (!isDrawing) return;
-            drawingContext.strokeStyle = '#3b82f6';
-            drawingContext.lineWidth = 3;
+            
+            // Check mode to set style
+            if (drawingContext.globalCompositeOperation === 'destination-out') {
+                drawingContext.lineWidth = 20; // Eraser size
+            } else {
+                drawingContext.strokeStyle = '#3b82f6';
+                drawingContext.lineWidth = 3; // Pen size
+            }
+            
             drawingContext.lineCap = 'round';
             drawingContext.lineJoin = 'round';
             drawingContext.lineTo(e.clientX, e.clientY);
@@ -2633,15 +3002,10 @@ function switchHistoryTab(tab) {
             }
         }
 
-        // ==================== THEME TOGGLE ====================
+        // ==================== THEME TOGGLE (REMOVED) ====================
         function toggleTheme() {
-            isDarkTheme = !isDarkTheme;
-            const body = document.body;
-            if (isDarkTheme) {
-                body.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)';
-            } else {
-                body.style.background = 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)';
-            }
+            // Functionality removed, keeping function to avoid errors if called
+            // isDarkTheme = !isDarkTheme; 
         }
 
         // ==================== FULLSCREEN ====================
@@ -2717,22 +3081,26 @@ function switchHistoryTab(tab) {
         // Close modal when clicking outside
         window.addEventListener('click', (e) => {
             const modal = document.getElementById('referencesModal');
+            const overviewModal = document.getElementById('overviewModal');
             if (e.target === modal) {
                 closeReferences();
             }
+            if (e.target === overviewModal) {
+                toggleOverview();
+            }
         });
 
-			  // Render KaTeX formulas after page load
-			  if (typeof renderMathInElement !== 'undefined') {
-					    setTimeout(() => {
-								      renderMathInElement(document.body, {
-												        delimiters: [
-																	          {left: '$$', right: '$$', display: true},
-																	          {left: '$', right: '$', display: false}
-																	        ]
-																	      });
-								    }, 500);
-					  }
+        // Initial KaTeX Render (if loaded early)
+        if (typeof renderMathInElement !== 'undefined') {
+            setTimeout(() => {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ]
+                });
+            }, 500);
+        }
     </script>
 </body>
 </html>
