@@ -786,11 +786,11 @@
 
         <footer>
             <div>
-                <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">33</span></span>
+                <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">34</span></span>
             </div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
-            </div>
+              </div>
             <div class="nav-buttons">
                 <button class="nav-btn" onclick="previousSlide()">
                     <i class="fas fa-chevron-right"></i> قبلی
@@ -1460,7 +1460,7 @@ function switchHistoryTab(tab) {
 	}
 
             {
-                id: 9,
+                      id: 10,
                 title: "روش‌های بهینه‌سازی",
                 type: "content",
                 timing: 3,
@@ -2000,7 +2000,7 @@ function switchHistoryTab(tab) {
             } else {
                 document.exitFullscreen();
             }
-        }
+            
 
         // ==================== PARTICLES ====================
         function initParticles() {
@@ -2070,17 +2070,18 @@ function switchHistoryTab(tab) {
             }
         });
 
-			  // Render KaTeX formulas after page load
-			  if (typeof renderMathInElement !== 'undefined') {
-					    setTimeout(() => {
-								      renderMathInElement(document.body, {
-												        delimiters: [
-																	          {left: '$$', right: '$$', display: true},
-																	          {left: '$', right: '$', display: false}
-																	        ]
-																	      });
-								    }, 500);
-					  }
-    </script>
+			      // Render KaTeX formulas with proper timing
+    window.addEventListener('load', () => {
+      if (typeof renderMathInElement !== 'undefined') {
+        setTimeout(() => {
+          renderMathInElement(document.body, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false}
+            ]
+          });
+        }, 1000);
+      }
+    });
 </body>
 </html>
