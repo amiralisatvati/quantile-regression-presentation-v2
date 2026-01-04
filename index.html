@@ -12,7 +12,7 @@
     <meta name="description" content="ارائه حرفه‌ای رگرسیون کوانتایل - دانشگاه فردوسی مشهد">
     <meta name="author" content="امیرعلی سطوتی">
     <meta property="og:title" content="رگرسیون کوانتایل - Quantile Regression">
-    <meta property="og:description" content="ارائه تعاملی رگرسیون کوانتایل با ۳۴ اسلاید">
+    <meta property="og:description" content="ارائه تعاملی رگرسیون کوانتایل با ۳۵ اسلاید">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -1021,7 +1021,7 @@
 
         <footer>
             <div>
-                <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">34</span></span>
+                <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">35</span></span>
             </div>
             <div class="progress-bar" onclick="progressBarClick(event)">
                 <div class="progress-fill" id="progressFill"></div>
@@ -2821,6 +2821,127 @@ y_pred = local_qr(X, y, X, tau=0.5, bandwidth=0.5)
                     timing: "2 دقیقه",
                     tips: "با انرژی و لبخند تمام کنید. از مخاطبین تشکر کنید."
                 }
+            },
+            
+            {
+                id: 35,
+                title: "نظرسنجی از شما",
+                type: "poll",
+                timing: 3,
+                content: `
+                    <div class="slide-content">
+                        <h2><i class="fas fa-poll" style="margin-left: 1rem;"></i>نظرسنجی: نظر شما برای ما مهم است!</h2>
+                        <p style="font-size:1.05rem; margin-bottom: 2rem;">
+                            لطفاً نظر خود درباره این ارائه را با ما در میان بگذارید. پاسخ شما به بهبود ارائه‌های آینده کمک می‌کند.
+                        </p>
+                        
+                        <form id="surveyForm" style="display: flex; flex-direction: column; gap: 2rem;">
+                            
+                            <!-- سوال 1: رضایت کلی -->
+                            <div class="survey-question">
+                                <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                                    <i class="fas fa-star"></i> میزان رضایت کلی شما از ارائه؟
+                                </h3>
+                                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                                    <label class="poll-option" style="flex: 1; min-width: 150px; justify-content: center;">
+                                        <input type="radio" name="satisfaction" value="5" required style="margin-left: 0.5rem;">
+                                        <span class="poll-icon">😍</span>
+                                        <span>عالی</span>
+                                    </label>
+                                    <label class="poll-option" style="flex: 1; min-width: 150px; justify-content: center;">
+                                        <input type="radio" name="satisfaction" value="4">
+                                        <span class="poll-icon">😊</span>
+                                        <span>خوب</span>
+                                    </label>
+                                    <label class="poll-option" style="flex: 1; min-width: 150px; justify-content: center;">
+                                        <input type="radio" name="satisfaction" value="3">
+                                        <span class="poll-icon">😐</span>
+                                        <span>متوسط</span>
+                                    </label>
+                                    <label class="poll-option" style="flex: 1; min-width: 150px; justify-content: center;">
+                                        <input type="radio" name="satisfaction" value="2">
+                                        <span class="poll-icon">😕</span>
+                                        <span>ضعیف</span>
+                                    </label>
+                                    <label class="poll-option" style="flex: 1; min-width: 150px; justify-content: center;">
+                                        <input type="radio" name="satisfaction" value="1">
+                                        <span class="poll-icon">😞</span>
+                                        <span>خیلی ضعیف</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- سوال 2: مفیدترین بخش -->
+                            <div class="survey-question">
+                                <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                                    <i class="fas fa-lightbulb"></i> کدام بخش برای شما مفیدتر بود؟
+                                </h3>
+                                <select name="most_useful" required style="padding: 1rem; background: var(--card-bg); color: var(--text-light); border: 1px solid var(--card-border); border-radius: 8px; font-size: 1rem; font-family: 'Vazirmatn', sans-serif;">
+                                    <option value="">انتخاب کنید...</option>
+                                    <option value="theory">مبانی نظری</option>
+                                    <option value="practical">نمونه‌های عملی</option>
+                                    <option value="code">کدهای نمونه</option>
+                                    <option value="applications">کاربردها</option>
+                                    <option value="implementation">مهندسی نرم‌افزار</option>
+                                </select>
+                            </div>
+
+                            <!-- سوال 3: آیا رگرسیون کوانتایل را استفاده خواهید کرد؟ -->
+                            <div class="survey-question">
+                                <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                                    <i class="fas fa-code"></i> آیا قصد دارید از رگرسیون کوانتایل در پروژه‌های خود استفاده کنید؟
+                                </h3>
+                                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                    <label class="poll-option" style="flex: 1;">
+                                        <input type="radio" name="will_use" value="yes" required style="margin-left: 0.5rem;">
+                                        <span class="poll-icon">✅</span>
+                                        <span>بله، حتماً</span>
+                                    </label>
+                                    <label class="poll-option" style="flex: 1;">
+                                        <input type="radio" name="will_use" value="maybe">
+                                        <span class="poll-icon">🤔</span>
+                                        <span>احتمالاً</span>
+                                    </label>
+                                    <label class="poll-option" style="flex: 1;">
+                                        <input type="radio" name="will_use" value="no">
+                                        <span class="poll-icon">❌</span>
+                                        <span>خیر</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- سوال 4: نظرات و پیشنهادات -->
+                            <div class="survey-question">
+                                <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                                    <i class="fas fa-comment"></i> نظرات و پیشنهادات شما:
+                                </h3>
+                                <textarea name="comments" rows="4" placeholder="نظرات، پیشنهادات یا انتقادات خود را اینجا بنویسید..." style="width: 100%; padding: 1rem; background: var(--card-bg); color: var(--text-light); border: 1px solid var(--card-border); border-radius: 8px; font-size: 1rem; font-family: 'Vazirmatn', sans-serif; resize: vertical;"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem; align-self: center;">
+                                <i class="fas fa-paper-plane"></i> ارسال نظرسنجی
+                            </button>
+                        </form>
+
+                        <div id="surveyThankYou" style="display: none; text-align: center; padding: 3rem;">
+                            <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success); margin-bottom: 1rem;"></i>
+                            <h2 style="color: var(--success); margin-bottom: 1rem;">با تشکر از شما!</h2>
+                            <p style="font-size: 1.1rem;">نظرات شما با موفقیت ثبت شد. از وقتی که گذاشتید سپاسگزاریم.</p>
+                            
+                            <div id="surveyResults" style="margin-top: 3rem; text-align: right;">
+                                <h3 style="color: var(--primary); margin-bottom: 1.5rem;">
+                                    <i class="fas fa-chart-bar"></i> نتایج نظرسنجی تا کنون:
+                                </h3>
+                                <div id="resultsContent"></div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                notes: {
+                    content: "نظرسنجی از مخاطبین. اجازه دهید آزادانه نظر بدهند. نتایج در localStorage ذخیره می‌شود.",
+                    timing: "3 دقیقه",
+                    tips: "به مخاطبین بگویید نظرشان برای شما ارزشمند است."
+                }
             }
         ];
 
@@ -2847,6 +2968,9 @@ y_pred = local_qr(X, y, X, tau=0.5, bandwidth=0.5)
             setupKeyboardShortcuts();
             updateBreadcrumb();
             generateOverview();
+            
+            // Listen for slide changes to init survey
+            document.addEventListener('slideChanged', initSurvey);
         }
 
         function renderSlides() {
@@ -2891,6 +3015,14 @@ y_pred = local_qr(X, y, X, tau=0.5, bandwidth=0.5)
             updateProgressBar();
             updateBreadcrumb();
             updateSpeakerNotes();
+            
+            // Trigger custom event for specific slide logic
+            document.dispatchEvent(new Event('slideChanged'));
+            
+            // Initialize survey if we land on slide 35 (index 34)
+            if (currentSlide === 34) {
+                setTimeout(initSurvey, 500);
+            }
         }
 
         function updateSlideCounter() {
@@ -3102,6 +3234,107 @@ y_pred = local_qr(X, y, X, tau=0.5, bandwidth=0.5)
                 };
                 grid.appendChild(item);
             });
+        }
+
+        // ==================== SURVEY FUNCTIONALITY ====================
+        function initSurvey() {
+            const form = document.getElementById('surveyForm');
+            if (!form) return;
+            
+            // Prevent multiple bindings
+            if (form.dataset.bound) return;
+            form.dataset.bound = "true";
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    satisfaction: form.satisfaction.value,
+                    most_useful: form.most_useful.value,
+                    will_use: form.will_use.value,
+                    comments: form.comments.value,
+                    timestamp: new Date().toISOString()
+                };
+
+                // ذخیره در localStorage
+                let surveys = JSON.parse(localStorage.getItem('quantileRegressionSurveys') || '[]');
+                surveys.push(formData);
+                localStorage.setItem('quantileRegressionSurveys', JSON.stringify(surveys));
+
+                // نمایش پیام تشکر و نتایج
+                form.style.display = 'none';
+                document.getElementById('surveyThankYou').style.display = 'block';
+                
+                displaySurveyResults();
+            });
+        }
+
+        function displaySurveyResults() {
+            const surveys = JSON.parse(localStorage.getItem('quantileRegressionSurveys') || '[]');
+            const resultsDiv = document.getElementById('resultsContent');
+            
+            if (surveys.length === 0) {
+                resultsDiv.innerHTML = '<p>هنوز نظری ثبت نشده است.</p>';
+                return;
+            }
+
+            // محاسبه آمار
+            const avgSatisfaction = (surveys.reduce((sum, s) => sum + parseInt(s.satisfaction), 0) / surveys.length).toFixed(1);
+            
+            const usefulCounts = {};
+            surveys.forEach(s => {
+                usefulCounts[s.most_useful] = (usefulCounts[s.most_useful] || 0) + 1;
+            });
+
+            const willUseCounts = {};
+            surveys.forEach(s => {
+                willUseCounts[s.will_use] = (willUseCounts[s.will_use] || 0) + 1;
+            });
+
+            const usefulLabels = {
+                'theory': 'مبانی نظری',
+                'practical': 'نمونه‌های عملی',
+                'code': 'کدهای نمونه',
+                'applications': 'کاربردها',
+                'implementation': 'مهندسی نرم‌افزار'
+            };
+
+            const willUseLabels = {
+                'yes': 'بله، حتماً',
+                'maybe': 'احتمالاً',
+                'no': 'خیر'
+            };
+
+            let html = `
+                <div class="grid-2" style="gap: 2rem;">
+                    <div class="info-box">
+                        <h4><i class="fas fa-star"></i> میانگین رضایت:</h4>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--success);">${avgSatisfaction} / 5</p>
+                        <p style="font-size: 0.9rem; opacity: 0.7;">از ${surveys.length} نفر</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> مفیدترین بخش:</h4>
+                        ${Object.entries(usefulCounts).map(([key, count]) => `
+                            <div style="margin: 0.5rem 0; display: flex; justify-content: space-between; align-items: center;">
+                                <span>${usefulLabels[key] || key}</span>
+                                <span style="background: var(--primary); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.9rem;">${count}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="info-box" style="margin-top: 1rem;">
+                    <h4><i class="fas fa-code"></i> قصد استفاده:</h4>
+                    ${Object.entries(willUseCounts).map(([key, count]) => `
+                        <div style="margin: 0.5rem 0; display: flex; justify-content: space-between; align-items: center;">
+                            <span>${willUseLabels[key] || key}</span>
+                            <span style="background: var(--secondary); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.9rem;">${count}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            resultsDiv.innerHTML = html;
         }
 
         // ==================== PARTICLES BACKGROUND ====================
