@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>رگرسیون کوانتایل - دانشگاه فردوسی مشهد</title>
+	  <!-- KaTeX for mathematical formulas -->
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+	  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+	  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+	  <!-- SEO & Social Media -->
+	  <meta name="description" content="ارائه حرفه‌ای رگرسیون کوانتایل - دانشگاه فردوسی مشهد">
+	  <meta name="author" content="امیرعلی سطوتی">
+	  <meta property="og:title" content="رگرسیون کوانتایل - Quantile Regression">
+	  <meta property="og:description" content="ارائه تعاملی رگرسیون کوانتایل با ۴۰ اسلاید">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -800,8 +809,76 @@
             R: منابع | F: تمام صفحه
         </div>
     </div>
+/* History Panel Styles */
+.history-tab-content {
+  animation: fadeInHistory 0.4s ease;
+}
+
+@keyframes fadeInHistory {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#historyTabBtn:hover,
+#peopleTabBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.grid-2 > div {
+  transition: all 0.3s ease;
+}
+
+.grid-2 > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
+}
+
+	/* Smooth Scroll */
+	.slide-container {
+	  scroll-behavior: smooth;
+	}
+
+	/* Speaker Notes Scrollbar */
+	.speaker-notes::-webkit-scrollbar {
+	  width: 6px;
+	}
+
+	.speaker-notes::-webkit-scrollbar-track {
+	  background: rgba(255, 255, 255, 0.05);
+	}
+
+	.speaker-notes::-webkit-scrollbar-thumb {
+	  background: var(--primary);
+	  border-radius: 3px;
+	}
+
+	/* Print Styles */
+	@media print {
+	  body {
+	    background: white !important;
+	    color: black !important;
+	  }
+
+	  .slide {
+	    page-break-after: always;
+	    opacity: 1 !important;
+	    position: relative !important;
+	  }
+
+	  header, footer, .controls, .speaker-notes, #particleCanvas, #drawingCanvas, #laserPointer {
+	    display: none !important;
+	  }
+	}
 
     <script>
+			
         // ==================== SLIDES DATA WITH SPEAKER NOTES ====================
         const slidesData = [
             {
@@ -1223,7 +1300,165 @@
                 }
             },
 
-            // Slides 9-33 (Keep the same structure as before)
+{
+  id: 9,
+  title: "تاریخچه و پیشگامان",
+  type: "interactive",
+  timing: 5,
+  content: `
+    <div class="slide-content">
+      <h2><i class="fas fa-history" style="margin-right: 1rem;"></i>تاریخچه رگرسیون کوانتایل و پیشگامان</h2>
+      
+      <div style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid rgba(59, 130, 246, 0.3); padding-bottom: 0.5rem;">
+        <button id="historyTabBtn" onclick="switchHistoryTab('history')" style="padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border: none; border-radius: 8px 8px 0 0; cursor: pointer; font-family: 'Vazirmatn', sans-serif; font-size: 1rem; font-weight: 600; transition: all 0.3s;">
+          <i class="fas fa-book-open"></i> تاریخچه
+        </button>
+        <button id="peopleTabBtn" onclick="switchHistoryTab('people')" style="padding: 0.8rem 1.5rem; background: rgba(255,255,255,0.05); color: var(--text-light); border: 1px solid var(--card-border); border-radius: 8px 8px 0 0; cursor: pointer; font-family: 'Vazirmatn', sans-serif; font-size: 1rem; font-weight: 600; transition: all 0.3s;">
+          <i class="fas fa-users"></i> پیشگامان
+        </button>
+      </div>
+
+      <div id="historyContent" style="display: block;">
+        <h3 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-timeline"></i> خط زمانی رگرسیون کوانتایل</h3>
+        <div style="position: relative; padding-right: 2rem; border-right: 3px solid var(--primary);">
+          
+          <div style="margin-bottom: 2rem; position: relative;">
+            <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--primary); border-radius: 50%; border: 3px solid var(--dark);"></div>
+            <div style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--primary);">
+              <h4 style="color: var(--primary); margin-bottom: 0.5rem;">۱۹۷۸ - تولد رگرسیون کوانتایل</h4>
+              <p>Roger Koenker و Gilbert Bassett مقاله تاریخی "Regression Quantiles" را در Econometrica منتشر کردند.</p>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 2rem; position: relative;">
+            <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--secondary); border-radius: 50%; border: 3px solid var(--dark);"></div>
+            <div style="background: rgba(139, 92, 246, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--secondary);">
+              <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">دهه ۱۹۸۰ - گسترش ناپارامتری</h4>
+              <p>توسعه روش‌های kernel-based و spline-based برای انعطاف‌پذیری بیشتر.</p>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 2rem; position: relative;">
+            <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--accent); border-radius: 50%; border: 3px solid var(--dark);"></div>
+            <div style="background: rgba(236, 72, 153, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--accent);">
+              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">دهه ۱۹۹۰ - پیشرفت‌های محاسباتی</h4>
+              <p>الگوریتم‌های کارآمدتر و نظریه آماری قوی‌تر برای رگرسیون کوانتایل ناپارامتریک.</p>
+            </div>
+          </div>
+
+          <div style="position: relative;">
+            <div style="position: absolute; right: -2.3rem; width: 1.5rem; height: 1.5rem; background: var(--success); border-radius: 50%; border: 3px solid var(--dark);"></div>
+            <div style="background: rgba(16, 185, 129, 0.1); padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--success);">
+              <h4 style="color: var(--success); margin-bottom: 0.5rem;">۲۰۰۰ تاکنون - عصر مدرن</h4>
+              <p>کاربردهای گسترده در یادگیری ماشین، اقتصاد، پزشکی. توسعه Deep Quantile Regression.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 2rem; background: rgba(59, 130, 246, 0.1); border-right: 4px solid var(--primary); padding: 1.5rem; border-radius: 8px;">
+          <h4 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-link"></i> منابع بیشتر</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin: 0.5rem 0;">
+              <a href="https://en.wikipedia.org/wiki/Quantile_regression" target="_blank" style="color: #60a5fa; text-decoration: none;">
+                <i class="fas fa-external-link-alt"></i> ویکی‌پدیا: Quantile Regression
+              </a>
+            </li>
+            <li style="margin: 0.5rem 0;">
+              <a href="https://www.jstor.org/stable/1913643" target="_blank" style="color: #60a5fa; text-decoration: none;">
+                <i class="fas fa-file-pdf"></i> مقاله اصلی Koenker & Bassett (1978)
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="peopleContent" style="display: none;">
+        <h3 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-user-tie"></i> پیشگامان رگرسیون کوانتایل</h3>
+        
+        <div class="grid-2" style="gap: 2rem;">
+          
+          <div style="background: rgba(59, 130, 246, 0.05); border: 2px solid var(--primary); border-radius: 12px; padding: 1.5rem; display: flex; gap: 1.5rem;">
+            <div style="flex: 0 0 100px;">
+              <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);">
+                RK
+              </div>
+            </div>
+            <div style="flex: 1;">
+              <h4 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Roger Koenker</h4>
+              <p style="font-size: 0.95rem; opacity: 0.9; line-height: 1.6; margin-bottom: 1rem;">
+                استاد اقتصادسنجی و آمار در دانشگاه ایلینوی. بنیان‌گذار رگرسیون کوانتایل مدرن با مقاله انقلابی ۱۹۷۸. نویسنده کتاب‌های متعدد در این حوزه.
+              </p>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="https://en.wikipedia.org/wiki/Quantile_regression" target="_blank" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem;">
+                  <i class="fas fa-external-link-alt"></i> ویکی‌پدیا
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: rgba(139, 92, 246, 0.05); border: 2px solid var(--secondary); border-radius: 12px; padding: 1.5rem; display: flex; gap: 1.5rem;">
+            <div style="flex: 0 0 100px;">
+              <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #8b5cf6, #ec4899); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);">
+                GB
+              </div>
+            </div>
+            <div style="flex: 1;">
+              <h4 style="color: var(--secondary); font-size: 1.3rem; margin-bottom: 0.5rem;">Gilbert Bassett Jr.</h4>
+              <p style="font-size: 0.95rem; opacity: 0.9; line-height: 1.6; margin-bottom: 1rem;">
+                اقتصاددان و استاد دانشگاه ایلینوی. همکار اصلی Koenker در توسعه رگرسیون کوانتایل. تحقیقات در اقتصادسنجی مالی و روش‌های قوی (Robust).
+              </p>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="https://www.jstor.org/stable/1913643" target="_blank" style="padding: 0.5rem 1rem; background: var(--secondary); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem;">
+                  <i class="fas fa-file-pdf"></i> مقاله ۱۹۷۸
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 2rem; background: rgba(16, 185, 129, 0.1); border-right: 4px solid var(--success); padding: 1.5rem; border-radius: 8px;">
+          <h4 style="color: var(--success); margin-bottom: 0.5rem;"><i class="fas fa-lightbulb"></i> نکته مهم</h4>
+          <p style="line-height: 1.6;">
+            رگرسیون کوانتایل به لطف کار پایه‌گذار این دو محقق، امروزه یکی از ابزارهای استاندارد در تحلیل داده‌های پیچیده و ناهمگن است و در علوم مختلف از اقتصاد تا پزشکی کاربرد دارد.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  `,
+  notes: {
+    content: "اسلاید تعاملی با دو تب: تاریخچه و پیشگامان. روی تب‌ها کلیک کنید و محتوا را نشان دهید. تأکید کنید که Koenker & Bassett در ۱۹۷۸ این روش را معرفی کردند.",
+    timing: "۵ دقیقه",
+    tips: "حتماً روی لینک‌های ویکی‌پدیا اشاره کنید. تب‌ها را جابجا کنید تا تعاملی بودن را نشان دهید."
+  }
+},
+					// Switch between history tabs
+function switchHistoryTab(tab) {
+  const historyContent = document.getElementById('historyContent');
+  const peopleContent = document.getElementById('peopleContent');
+  const historyBtn = document.getElementById('historyTabBtn');
+  const peopleBtn = document.getElementById('peopleTabBtn');
+  
+  if (tab === 'history') {
+    historyContent.style
+		.display = 'block';
+		    peopleContent.style.display = 'none';
+		    historyBtn.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+		    historyBtn.style.color = 'white';
+		    peopleBtn.style.background = 'rgba(255,255,255,0.05)';
+		    peopleBtn.style.color = 'var(--text-light)';
+		  } else {
+		    historyContent.style.display = 'none';
+		    peopleContent.style.display = 'block';
+		    historyBtn.style.background = 'rgba(255,255,255,0.05)';
+		    historyBtn.style.color = 'var(--text-light)';
+		    peopleBtn.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+		    peopleBtn.style.color = 'white';
+		  }
+	}
+
             {
                 id: 9,
                 title: "روش‌های بهینه‌سازی",
@@ -1834,6 +2069,18 @@
                 closeReferences();
             }
         });
+
+			  // Render KaTeX formulas after page load
+			  if (typeof renderMathInElement !== 'undefined') {
+					    setTimeout(() => {
+								      renderMathInElement(document.body, {
+												        delimiters: [
+																	          {left: '$$', right: '$$', display: true},
+																	          {left: '$', right: '$', display: false}
+																	        ]
+																	      });
+								    }, 500);
+					  }
     </script>
 </body>
 </html>
